@@ -1,0 +1,74 @@
+.profileicon{
+    font-size: 150px;
+    text-align: center;
+    color: grey;
+  }
+  .profilebutton{
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px grey;
+  }
+  .profilebutton:hover{
+    background-color: rgb(189, 187, 187);
+    color: #371a5e;
+    font-weight: bold;
+  }
+  .profileh5{
+    font-weight: bold;
+    text-align: start;
+  }
+  .profilename{
+    font-weight: bold;
+    text-align: start;
+  }
+  .fresher{
+    text-align: start;
+  }
+  .profileselect{
+    border-radius: 10px;
+  }
+  .profilebutton1{
+    background-color: rgb(19, 19, 66);
+    color: white;
+    border-radius: 10px;
+  height: 50px;
+  width: 150px;
+  }
+
+
+.profilecard{
+    width: 500px;
+    height: 600px;
+}
+
+  /* applied part */
+
+  .appliedh2{
+font-weight: bold;
+  }
+.small{
+    
+    color: black;
+   
+}
+.sunbcard{
+    height: 400px;
+}
+.domain{
+    border-radius: 20px;
+    background-color:gray;
+    
+}
+.threebutton{
+    background-color: transparent;
+    border-radius: 10px;
+    border: none;
+}
+.devi{
+    margin-left: 260px;
+}
+
+
+
+

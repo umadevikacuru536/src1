@@ -73,7 +73,7 @@ style={{color:"white"}}>Jobs</span></p>
                     <p><i class="fa-solid fa-greater-than" style={{color: "white", margin: "10px"}}></i><span
                            style={{color:"white"}}>Fraudt
                             alert</span></p>
-                            <h1>fiiiii</h1>
+                        
 
                 </div>
             </div>
@@ -114,3 +114,5 @@ style={{color:"white"}}>Jobs</span></p>
   }
   
   export default Footer;
+
+

@@ -1,0 +1,97 @@
+.subhomebutton{
+    background-color: white;
+    border-radius: 10px;
+    border-color: white;
+    margin-right: 8px;
+  }
+  .subbutton1{
+    background-color: #4f3570;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: white;
+  }
+  .container8{
+    text-align: center;
+    background-color:#f8f2f8 ;
+    }
+    .location21{
+        background-color:whitesmoke;
+        color: #5b13b9;
+        border-radius: 10px;
+        border-color:#685a7a;
+    }
+    .indusrty{
+        background-color:whitesmoke;
+        color: #5b13b9;
+        border-radius: 10px;
+        border-color:whitesmoke;
+    }
+    .uma{
+        width: 300px;
+        height: 100px;
+    }
+    .card43{
+        width: 90%;
+        height: 32vh;
+        background-color: white;
+        border: 1px solid #d4c3eb;
+        box-shadow: 1px 2px ;
+        padding-left: 20px;
+        border-radius: 10px;
+        
+    }
+    .card435{
+        width: 90%;
+        height: 32vh;
+        background-color: rgb(255, 254, 254);
+      border-color: white;
+       border-radius: 10px;
+        padding-left: 20px;
+        box-shadow: 1px 1px 1px 1px ;
+    }
+    .card4{
+        width: 140%;
+        height: 39vh;
+        background-color: rgb(255, 254, 254);
+      border-color: white;
+       border-radius: 10px;
+        padding-left: 20px;
+        box-shadow: 1px 1px 1px 1px ;
+    }
+    .card5{
+        width: 90%;
+        height: 250vh;
+        background-color: rgb(255, 254, 254);
+      border-color: white;
+       border-radius: 10px;
+        padding-left: 20px;
+        box-shadow: 1px 1px 1px 1px ;
+    }
+    .scroll{
+        overflow-y: scroll;
+    }
+
+   
+    .active{
+     
+        /* border: 1px solid #67498f; */
+        box-shadow: 1px 1px 1px 1px;
+        
+    }
+     
+.margin{
+    border-right: 1px solid black;
+ 
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+    .select{
+        border:2px solid rgb(95, 54, 105);
+        background-color:#f8f2f8 ;
+      
+      }
+      /* .blogs_container{
+        border: 1px solid green;
+        border-radius: 15px;
+      } */

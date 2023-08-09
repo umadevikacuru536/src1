@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Content-Length: 24
+ETag: W/"18-HzS6/bvseeEDW/eEueCAcrH9lwU"
+Date: Thu, 03 Aug 2023 23:17:38 GMT
+Connection: close
+
+user created succesfully
