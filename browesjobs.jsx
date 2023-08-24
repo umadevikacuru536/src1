@@ -721,6 +721,7 @@ function Home2(props) {
                         <h1>cities</h1>
                         <p>{selectedblog.cities}</p>
                       </div>
+                      // siva
                     )}
                   </div>
                 </div>
