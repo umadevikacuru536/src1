@@ -83,9 +83,9 @@ function Home1() {
                 <i class="fa-solid fa-bell bellicon"></i>
               </li>
               <li class="nav-item">
-                <a href="profile.html">
-                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i>
-                </a>
+              <Link to="/profile">
+                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i></Link>
+               
               </li>
             </ul>
           </div>

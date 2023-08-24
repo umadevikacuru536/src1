@@ -5,7 +5,6 @@ function Jobs(){
     return(
         <div>
 
-
 <nav class="navbar navbar-expand-sm navbar-dark shadow">
         <div class="container">
           <img
@@ -83,9 +82,9 @@ function Jobs(){
                 <i class="fa-solid fa-bell bellicon"></i>
               </li>
               <li class="nav-item">
-                <a href="profile.html">
-                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i>
-                </a>
+              <Link to="/profile">
+                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i></Link>
+               
               </li>
             </ul>
           </div>
@@ -130,14 +129,20 @@ function Jobs(){
     <div class="col-2">
 
     </div>
-    <div class=" d-flex  parent-container">
-        <div class="fixed-container d-flex flex-column p-3 col-3 categoryBtnContainer">
-            <button class=" categoryButton m-1 ">All Jobs</button>
-            <button class="categoryBtn m-1"> Jobs By location</button>
-            <button class="categoryBtn m-1"> Jobs By Company</button>
-            <button class="categoryBtn m-1"> Jobs By Category</button>
+    <div class="col-md-2  d-flex  parent-container">
+          <div class="fixed-container d-flex flex-column p-3 col-3 categoryBtnContainer">
+            <Link to="/jobs">
+              {" "}
+              <button class=" categoryButton m-1 ">All Jobs</button>
+            </Link>
+           <Link to="/joblocations"> <button class="categoryBtn m-1"> Jobs By location</button></Link>
+           <Link to="/joblocompany"><button class="categoryBtn m-1"> Jobs By Company</button></Link> 
+            <Link to="/jobcategory">
+              <button class="categoryBtn m-1"> Jobs By Category</button>
+            </Link>
             <button class="categoryBtn m-1"> Jobs By Designation</button>
             <button class="categoryBtn m-1"> Jobs By Skills</button>
+          </div>
         </div>
 
         <div class="col-md-8 p-4 allJobsContainer">
@@ -459,7 +464,7 @@ function Jobs(){
 
         </div>
     </div>
-</div>
+
 
 
 

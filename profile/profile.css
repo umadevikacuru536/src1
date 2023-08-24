@@ -1,5 +1,5 @@
 .profileicon{
-    font-size: 150px;
+    font-size: 100px;
     text-align: center;
     color: grey;
   }
@@ -38,8 +38,15 @@
 
 
 .profilecard{
-    width: 500px;
-    height: 600px;
+    width: 400px;
+    height: 750px;
+    justify-content: center;
+    
+}
+.profilecard1{
+  width: 500px;
+  height: 600px;
+  
 }
 
   /* applied part */
@@ -68,7 +75,68 @@ font-weight: bold;
 .devi{
     margin-left: 260px;
 }
-
-
-
-
+.grapicscard{
+  height: 315px;
+  width: 600px;
+  
+}
+.profilecard2{
+  height: 750px;
+}
+.profilecard7{
+  margin-left: 100px;
+}
+.spa83{
+  margin-left: 100px;
+  color: red;
+}
+.spa84 {
+  margin-left: 80px;
+  font-size: 15px;
+}
+.profilecardi{
+  width: 400px;
+    height: 500px;
+    justify-content: center;
+}
+.resumebtn{
+ background-color: white;
+ border-color: white;
+ border-radius: 20px;
+}
+.resumeUploadbtn1{
+  background-color: #371a5e;
+  color: white;
+  border-radius: 10px;
+  margin-left: 200px;
+}
+.resumepara{
+  margin-left: 150px;
+  font-size: 15px;
+  color: gray;
+}
+.resumeUploadbtn{
+ border-style: dashed;
+ color: gray;
+ padding: 50px;
+}
+.card1{
+  height: 300px;
+  width: 650px;
+}
+.card2{
+  height: 180px;
+  width: 650px;
+}
+.card3{
+  height: 300px;
+  width: 650px;
+}
+.card4{
+  height: 400px;
+  width: 650px;
+}
+.card5{
+  height: 300px;
+  width: 650px;
+}

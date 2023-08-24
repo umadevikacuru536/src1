@@ -17,8 +17,7 @@ function About() {
 
   const usersData = {
     email: email,
-
-    password: password,
+    password: password
   };
   console.log(usersData);
 
@@ -26,7 +25,7 @@ function About() {
     e.preventDefault();
     if (email && password !== "") {
       axios
-        .post("https://pab-server.onrender.com/auth/login", usersData)
+        .post("http://localhost:5010/login", usersData)
         .then((response) => {
           if (response.status === 200) {
             let jwtToken = response.data.token;
@@ -91,9 +90,9 @@ function About() {
                 />
                 {/* Same as */}
                 <ToastContainer />
-                <form onSubmit={onSubmitBtn}>
+                <div onSubmit={onSubmitBtn}>
               <label for="" class="loginemail">Email ID</label><br />
-              <input type="text" name="" id="" class="logininput w-75" placeholder="enter your email ID"  onChange={(e) => setemail(e.target.value)}
+              <input type="text" name="" id="" class="logininput w-75" placeholder="enter your email ID"  onChange={(e) => setemail (e.target.value)}
                     value={email} /><br />
               <label for="" class="loginpassword">password</label><br />
               <input type="password" name="" id="" class="logininput w-75" placeholder="enter your password" onChange={(e) => setpassword(e.target.value)}
@@ -101,7 +100,7 @@ function About() {
               <i class="fa-solid fa-eye eyeicon"></i>
              <Link to="/forgot"> <a href="./forgot password.html" style={{ color: "white" }}><p class="loginforgot">Forgot password?</p></a></Link>
               <a href="/home"><button class="loginbutton">Login</button></a>
-              </form>
+              </div>
               <Link to="/loginotp"><a href="./loginOTP .html" style={{ color: "white" }}><h6 class="loginh4">Login via OTP</h6></a></Link>
               <span class="logingoogle"><button class="loginbutton2 shadow"><img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzVDA2e7vaSAfhljLBVppf2X0b0OuAxTQZqjYZcemxu6Umeik13cJI3HYISVRfEz9SMQA&usqp=CAU"

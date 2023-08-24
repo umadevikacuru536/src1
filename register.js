@@ -9,11 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
   const [type, settype] = useState("");
-  const [name, setname] = useState("");
+  const [fullname, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
-  const [phone, setphone] = useState("");
+  const [mobilenumber, setmobilenumber] = useState("");
 
   let navigate = useNavigate();
   const [data, Setdata] = useState([]);
@@ -21,19 +21,19 @@ function Register() {
 
   const usersData = {
     type: type,
-    name: name,
+    fullname: fullname,
     email: email,
-    contactNumber: phone,
+    mobilenumber: mobilenumber,
     password: password,
-    originalpassword: confirmpassword,
+    confirmpassword: confirmpassword,
   };
   console.log(usersData)
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    if (name && email && phone && password && confirmpassword !== "") {
+    if (type && fullname && email && mobilenumber && password && confirmpassword !== "") {
       axios
-        .post("https://pab-server.onrender.com/auth/signup", usersData)
+        .post("http://localhost:5010/signup/", usersData)
         .then((response) => {
           Setdata(response.data);
 
@@ -68,25 +68,90 @@ function Register() {
   console.log(type);
 
   return (
+    <div>
     <div className="App">
-      <nav className="navbar navbar-expand-sm bg-light">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img
-              src={logo}
-              className="logo"
-              style={{ width: "250px", paddingleft: "100px" }}
-            />
-          </a>
-          <div className="devi d-flex flex-row ">
-            <p className="d-none d-md-block">
-              Browse Jobs <i className="fa-solid fa-caret-down"></i>
-            </p>
-
-            <p className="d-none d-md-block" style={{ marginleft: "20px" }}>
-              {" "}
-              Jobs <i className="fa-solid fa-caret-down"></i>
-            </p>
+    <nav class="navbar navbar-expand-sm navbar-dark shadow">
+        <div class="container">
+          <img
+            src={logo}
+            style={{ width: "200px", paddingleft: "100px", marginLeft: "30px" }}
+          />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavbar"
+            style={{ backgroundcolor: "black" }}
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse"
+            id="collapsibleNavbar"
+            style={{ marginleft: "500px" }}
+          >
+            <ul class="navbar-nav" style={{ marginleft: "500px" }}>
+              <li class="nav-item" style={{marginLeft:"400px"}}>
+                <Link to="/home" style={{ color: "white" }}>
+                  <a class="nav-link " href="" style={{ color: "black" }}>
+                    Home
+                  </a>
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link to="/browesjobs" style={{ color: "white" }}>
+                  {" "}
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="/browsejobs"
+                    style={{ color: "black" }}
+                  >
+                    Browse Jobs
+                  </a>
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link to="/jobs" style={{ color: "white" }}>
+                  {" "}
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    style={{ color: "black" }}
+                  >
+                    Jobs
+                  </a>
+                </Link>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  style={{ color: "black" }}
+                >
+                  services
+                </a>
+              </li>
+              <li class="nav-item">
+                <Link to="/pay" style={{ color: "white" }}>
+                  {" "}
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="payment.html"
+                    style={{ color: "black" }}
+                  >
+                    payments
+                  </a>
+                </Link>
+              </li>
+              <li class="nav-item">
+                <i class="fa-solid fa-bell bellicon"></i>
+              </li>
+              <li class="nav-item">
+              <Link to="/profile">
+                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i></Link>
+               
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
@@ -194,7 +259,7 @@ function Register() {
                       : "Enter Company Name"
                   }
                   onChange={(e) => setname(e.target.value)}
-                  value={name}
+                  value={fullname}
                 />
 
                 <div class="mb-3">
@@ -256,8 +321,8 @@ function Register() {
                     class="control alreadyakkadaundi"
                     style={{ padding: "10px" }}
                     placeholder="Enter your moblie number"
-                    onChange={(e) => setphone(e.target.value)}
-                    value={phone}
+                    onChange={(e) => setmobilenumber(e.target.value)}
+                    value={mobilenumber}
                   />
                 </div>
 
@@ -349,6 +414,8 @@ function Register() {
         </div>
       </div>
     </div>
+    </div>
+    
 
   );
 }
