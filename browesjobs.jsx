@@ -1,6 +1,6 @@
 import "./browesjobs.css";
 import logo from "./pabjobs-logo.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,6 +8,7 @@ import axios from "axios";
 function Home2(props) {
   const { state } = useLocation();
   console.log("params", state);
+
   const [blogslist, setblogslist] = useState([]);
   const [selectedblog, setselectedblog] = useState(null);
   const [userskills, setUserskills] = useState("");
@@ -61,6 +62,10 @@ function Home2(props) {
         },
       });
       setblogslist(response.data);
+      if (state?.location) {
+        handleFilter(state?.location, response.data);
+      }
+      
     } catch (error) {
       console.error("Error fetching blogs:", error);
     }
@@ -76,6 +81,15 @@ function Home2(props) {
 
   console.log(blogslist);
   console.log(selectedblog);
+
+  const handleFilter = (company, alljobs = blogslist) => {
+    company = Array.isArray(company) ? company : [company];
+    const filter = alljobs.filter((job) => {
+      return company.includes(job.companyname);
+    });
+    console.log(filter);
+    setblogslist(filter);
+  };
   return (
     <div>
       <nav class="navbar navbar-expand-sm navbar-dark shadow">

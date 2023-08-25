@@ -1,7 +1,71 @@
 import './App.css'
 import logo from "./pabjobs-logo.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Payments() {
+  const [fullname, setfullname] = useState("");
+  const [email, setState] = useState("");
+  const [mobilenumber, setCurrentlocation] = useState("");
+  const [amount, setmobile] = useState("");
+  
+
+  const [data, setdata] = useState([]);
+  const useData1 = {
+    fullname: fullname,
+    email: email,
+    mobilenumber: mobilenumber,
+    amount: amount,
+  };
+  console.log(useData1);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (! fullname && !email &&mobilenumber&&amount) {
+      // Perform your submit logic here
+      setErrorMessage("Form submitted successfully");
+    } else {
+      setErrorMessage("Form submission failed. Please check errors.");
+    }
+
+    if (
+      fullname &&
+      State &&
+      Currentlocation &&
+      mobile &&
+      emailE1 !== ""
+    ) {
+      const headers = {
+        token :
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZDBhMGJhOTZkMTA5YTFhNzZkNzMiLCJpYXQiOjE2OTExNDQzOTV9.tX4qCPXSptfwgk1C6dIhOVgB6ffWwGhOgClGkZluU9s"
+      };
+      axios
+        .post("http://localhost:5010/profile", useData1, { headers })
+        .then((response) => {
+          setdata(response.data);
+
+          console.log(response.data);
+          if (response.status === 200) {
+            toast.success("Registration Successfull", {
+              position: "top-right",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    } else {
+      toast.warning("Enter the Required Details");
+    }
+  };
     return (
         <div>
             <nav class="navbar navbar-expand-sm navbar-dark shadow">
@@ -96,6 +160,18 @@ function Payments() {
                         <div class="card" style={{ borderradius: "20px",width:"40vw" }}>
 
                             <h1 class="heading" style={{ textalign: "center" }}>Payment Request</h1>
+                            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
                             <div> 
                                 <div class="mb-3 mt-3">
                                     <label for=" Name" class="form-label" id="fullname"> Name</label><br />

@@ -156,6 +156,7 @@ function Changepassword() {
                 <Link to="/about"><button class="p-2 mb-1 profilebutton w-75">Log Out</button></Link>
         </div>
         <div className="col-12 col-md-9">
+          
           <div className="col-md-10">
           <ToastContainer
                 position="top-right"
@@ -167,11 +168,10 @@ function Changepassword() {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="light"
+                theme="colored"
               />
-              {/* Same as */}
-              <ToastContainer />
-            <div class="card profilecard2 p-3" onClick={onSubmitForm}>
+            <form class="card profilecard2 p-3" onClick={onSubmitForm}>
+              
               <h5 class="profileh5">Change Password</h5>
               <hr />
               <label for="" class="profilename mb-1">
@@ -223,7 +223,7 @@ function Changepassword() {
               <button class="w-25 mt-4 p-2 profilebutton1">
                 Update Password
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>

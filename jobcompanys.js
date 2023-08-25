@@ -1,49 +1,63 @@
-import './App.css';
+
+import "./browesjobs.css";
 import logo from "./pabjobs-logo.png";
+import { Link } from "react-router-dom";
 
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
-function Jobcompany(){
-    const elementRefs = {};
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filteredButtons, setFilteredButtons] = useState('');
-  const [filter, setFilter] = useState([]);
-  const allButtons = [
-    'TCS', 'perferx', 'infosys', 'wipro', 'google',
-    'HP', 'DELL', 'IBM', 'Accenture', 'Apple', 'HCL',
-    'Deloitte', 'sony', 'cognizant', 'TATA', 'samsung',
-    'intel',  'TCS', 'perferx', 'infosys', 'wipro', 'google',
-    'HP', 'DELL', 'IBM', 'Accenture', 'Apple', 'HCL',
-    'Deloitte', 'sony', 'cognizant', 'TATA', 'samsung',
-    'intel',
-    'TCS', 'perferx', 'infosys', 'wipro', 'google',
-    'HP', 'DELL', 'IBM', 'Accenture', 'Apple', 'HCL',
-    'Deloitte', 'sony', 'cognizant', 'TATA', 'samsung',
-    'intel'
-  ];
 
-  const handleSearch = () => {
-    const filtered = allButtons.filter(button =>
-      button.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredButtons(filtered);
-   
+function Jobcompany() {
+  const [blogslist, setblogslist] = useState([]);
+  
+
+  const [selectCompany, setselectCompany] = useState([]);
+  const navigate=useNavigate();
 
  
+  const handlecompany = (company) => {
+    if (selectCompany.includes(company)) {
+      setselectCompany((blogslist) =>
+        blogslist.filter((item) => item !== company)
+      );
+    } else {
+      setselectCompany((blogslist) => [...blogslist, company]);
+    }
   };
-  const handleButtonOnClick = (buttonName) => {
-    // Handle the click event for each button here
-    setFilter( `${buttonName}`);
-    setSearchTerm(`${buttonName}`);
-    if (elementRefs[buttonName]) {
-        elementRefs[buttonName].style.display = 'none';
-      }
-    
-};
-    return(
-        <div>
-       <nav class="navbar navbar-expand-sm navbar-dark shadow">
+
+  const removeitem = (_id) => {
+    const updateditem = [...selectCompany];
+    updateditem.splice(_id, 1);
+    setselectCompany(updateditem);
+  };
+  const handleClick = () => {
+    navigate("/browesjobs", { state: { location: selectCompany } });
+  };
+
+  useEffect(() => {
+    fetchblogs();
+  }, []);
+
+  const fetchblogs = async () => {
+    const api = "http://localhost:5010/allbrowsers";
+    const authToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZDBhMGJhOTZkMTA5YTFhNzZkNzMiLCJpYXQiOjE2OTExNDQzOTV9.tX4qCPXSptfwgk1C6dIhOVgB6ffWwGhOgClGkZluU9s";
+    try {
+      const response = await axios.get(api, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+      setblogslist(response.data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }
+  };
+
+  return (
+    <div>
+      <nav class="navbar navbar-expand-sm navbar-dark shadow">
         <div class="container">
           <img
             src={logo}
@@ -64,7 +78,7 @@ function Jobcompany(){
             style={{ marginleft: "500px" }}
           >
             <ul class="navbar-nav" style={{ marginleft: "500px" }}>
-              <li class="nav-item" style={{marginLeft:"400px"}}>
+              <li class="nav-item" style={{ marginLeft: "400px" }}>
                 <Link to="/home" style={{ color: "white" }}>
                   <a class="nav-link " href="" style={{ color: "black" }}>
                     Home
@@ -120,147 +134,154 @@ function Jobcompany(){
                 <i class="fa-solid fa-bell bellicon"></i>
               </li>
               <li class="nav-item">
-              <Link to="/profile">
-                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i></Link>
-               
+                <Link to="/profile">
+                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-
-            {/* ... */}
-            <div className="container buttoncontainer">
-            <div className="row">
-                <div className="col-12 col-md-2">
-                <Link to="/jobs" style={{color:"white"}}><button className="card shadow jobbutton ">All Jobs</button></Link>
-                </div>
-                <div className="col-12 col-md-2">
-                <Link to="/joblocations" style={{color:"white"}}><button className="card shadow jobbutton ">Job By Location</button></Link>
-                </div>
-                <div className="col-12 col-md-2">
-                <Link to="/joblocompany" > <button className="card shadow jobbutton bg-primary ">Jobs By Company</button></Link>
-                </div>
-                <div className="col-12 col-md-2">
-                <Link to="/jobcategory" style={{color:"white"}}><button className="card shadow jobbutton  "> Jobs By Category</button></Link>
-                </div>
-                <div className="col-12 col-md-2">
-                <button className="card shadow jobbutton ">Jobs By Designation</button>
-                </div>
-                <div className="col-12 col-md-2">
-                <button className="card shadow jobbutton ">Jobs By Skills</button>
-                </div>
-
-            </div>
-
+      <div className="container buttoncontainer">
+        <div className="row">
+          <div className="col-12 col-md-2">
+            <Link to="/jobs" style={{ color: "white" }}>
+              <button className="card shadow jobbutton ">All Jobs</button>
+            </Link>
           </div>
-          {/* .... */}
-          <div className="container mt-5">
-            <div className="row">
-                <div className="col-12 col-md-4">
-                    <h5>Featured Jobs By Company</h5>
-                   
-                </div>
-                <div className="col-12 col-md-5">
-                    
-                </div>
-
-                <div className="col-12 col-md-3">
-                <div class="input-group">
-                <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" placeholder="search"  value={searchTerm} onChange={e =>setSearchTerm(e.target.value)}/>
-                    
-                </div>
-                <button type="button" class="btn btn-primary" onClick={handleSearch}>
-                    <i class="fas fa-search"></i>
-                </button>
-                </div>
-                </div>
-
-            </div>
-
+          <div className="col-12 col-md-2">
+            <Link to="/joblocations" style={{ color: "white" }}>
+              <button className="card shadow jobbutton ">
+                Job By Location
+              </button>
+            </Link>
           </div>
-          {/* .... */}
-          <div className="container mt-5">
-            <div className="row">
-                <div className="col-12 col-md-12 d-flex">
-                    <button className="buttonalpha card shadow">A</button>
-                    <button className="buttonalpha card shadow">B</button>
-                    <button className="buttonalpha card shadow">C</button>
-                    <button className="buttonalpha card shadow">D</button>
-                    <button className="buttonalpha card shadow">E</button>
-                    <button className="buttonalpha card shadow">F</button>
-                    <button className="buttonalpha card shadow">G</button>
-                    <button className="buttonalpha card shadow">H</button>
-                    <button className="buttonalpha card shadow">I</button>
-                    <button className="buttonalpha card shadow">J</button>
-                    <button className="buttonalpha card shadow">K</button>
-                    </div>
-                    <div className="col-12 col-md-12 d-flex">
-                    <button className="buttonalpha card shadow">L</button>
-                    <button className="buttonalpha card shadow">M</button>
-                    <button className="buttonalpha card shadow">N</button>
-                    <button className="buttonalpha card shadow">O</button>
-                    <button className="buttonalpha card shadow">P</button>
-                    <button className="buttonalpha card shadow">Q</button>
-                    <button className="buttonalpha card shadow">R</button>
-                    <button className="buttonalpha card shadow">S</button>
-                    <button className="buttonalpha card shadow">T</button>
-                    <button className="buttonalpha card shadow">U</button>
-                    <button className="buttonalpha card shadow">V</button>
-                    </div>
-                    <div className="col-12 col-md-12 d-flex">
-                    <button className="buttonalpha card shadow">W</button>
-                    <button className="buttonalpha card shadow">X</button>
-                    <button className="buttonalpha card shadow">Y</button>
-                    <button className="buttonalpha card shadow">Z</button>
-                </div>
-                
-            </div>
-
+          <div className="col-12 col-md-2">
+            <Link to="/joblocompany">
+              {" "}
+              <button className="card shadow jobbutton bg-primary ">
+                Jobs By Company
+              </button>
+            </Link>
           </div>
-        
-         
-          <div className='container'>
-            <div className='row'>
-                <div className='col-md-5'></div>
-            {searchTerm && 
-            <div className='col-md-2' ref={el => elementRefs[allButtons.buttonName] = el}>
-                <p className='para616'>{filter}   
-                <button onClick={e =>handleButtonOnClick(e.target.value)} className='cross'>✖</button></p>
-                 
-                
-                <Link to="/browesjobs"><button className='button618' style={{background:"blue",color:"white"}}>filter selected<i class="fas fa-search"></i></button></Link>
-                
-            </div>
-            }
-             </div>    
+          <div className="col-12 col-md-2">
+            <Link to="/jobcategory" style={{ color: "white" }}>
+              <button className="card shadow jobbutton  ">
+                {" "}
+                Jobs By Category
+              </button>
+            </Link>
           </div>
-
-          
-
-<div className="container mt-5">
-     
-     <div className="row mt-2">
-       {filteredButtons.length === 0 ? (
-         <p>No results found.</p>
-       ) : (
-         filteredButtons.map((button, index) => (
-           <div className="col-12 col-md-3" key={index}>
-             <button className="buttonlocation card w-100 mb-3" onClick={() => handleButtonOnClick(button)}>{button}</button>
-             
-           </div>
-         ))
-       )}
-     </div>
-   </div>
-
-
-        
-
-   
-
+          <div className="col-12 col-md-2">
+            <button className="card shadow jobbutton ">
+              Jobs By Designation
+            </button>
+          </div>
+          <div className="col-12 col-md-2">
+            <button className="card shadow jobbutton ">Jobs By Skills</button>
+          </div>
         </div>
-    )
+      </div>
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-12 col-md-4">
+            <h5>Featured Jobs By Company</h5>
+          </div>
+          <div className="col-12 col-md-5"></div>
+
+          <div className="col-12 col-md-3">
+            <div class="input-group">
+              <div class="form-outline">
+                <input
+                  type="search"
+                  id="form1"
+                  class="form-control"
+                  placeholder="search"
+                />
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                 
+              >
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-12 col-md-12 d-flex">
+            <button className="buttonalpha card shadow">A</button>
+            <button className="buttonalpha card shadow">B</button>
+            <button className="buttonalpha card shadow">C</button>
+            <button className="buttonalpha card shadow">D</button>
+            <button className="buttonalpha card shadow">E</button>
+            <button className="buttonalpha card shadow">F</button>
+            <button className="buttonalpha card shadow">G</button>
+            <button className="buttonalpha card shadow">H</button>
+            <button className="buttonalpha card shadow">I</button>
+            <button className="buttonalpha card shadow">J</button>
+            <button className="buttonalpha card shadow">K</button>
+          </div>
+          <div className="col-12 col-md-12 d-flex">
+            <button className="buttonalpha card shadow">L</button>
+            <button className="buttonalpha card shadow">M</button>
+            <button className="buttonalpha card shadow">N</button>
+            <button className="buttonalpha card shadow">O</button>
+            <button className="buttonalpha card shadow">P</button>
+            <button className="buttonalpha card shadow">Q</button>
+            <button className="buttonalpha card shadow">R</button>
+            <button className="buttonalpha card shadow">S</button>
+            <button className="buttonalpha card shadow">T</button>
+            <button className="buttonalpha card shadow">U</button>
+            <button className="buttonalpha card shadow">V</button>
+          </div>
+          <div className="col-12 col-md-12 d-flex">
+            <button className="buttonalpha card shadow">W</button>
+            <button className="buttonalpha card shadow">X</button>
+            <button className="buttonalpha card shadow">Y</button>
+            <button className="buttonalpha card shadow">Z</button>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="row">
+          {selectCompany.length > 0 ? (
+            selectCompany.map((location, index) => (
+              <div className="" key={index}>
+                <h2>{location}    <span onClick={removeitem}>X</span></h2>
+               
+                <button onClick={handleClick}>Filter Array</button> 
+              </div>
+            ))
+          ) : (
+            <div className="notFound"></div>
+          )}
+        </div>
+      </div>
+
+      <div className="container mt-5">
+        <div className="row mt-2">
+          {blogslist.length === 0 ? (
+            <p>No results found.</p>
+          ) : (
+            blogslist.map((blog, index) => (
+              <div className="col-12 col-md-3" key={index}>
+                <button
+                  className="buttonlocation card w-100 mb-3"
+                  onClick={() => handlecompany(blog.companyname)}
+                >
+                  {blog.companyname}
+                </button>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
+
 export default Jobcompany;
