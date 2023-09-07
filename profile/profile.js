@@ -26,8 +26,6 @@ function Profile() {
     emailE1: emailE1,
   };
   console.log(useData1);
-
-  const [error, setErrorMessage] = useState([]);
   const [name, setName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [nameError, setNameError] = useState("");
@@ -63,18 +61,11 @@ function Profile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!nameError && !mobileNumberError && name && mobileNumber) {
-      // Perform your submit logic here
-      setErrorMessage("Form submitted successfully");
-    } else {
-      setErrorMessage("Form submission failed. Please check errors.");
-    }
-
     if (
-      fullname &&
+      name &&
       State &&
       Currentlocation &&
-      mobile &&
+      mobileNumber &&
       emailE1 !== ""
     ) {
       const headers = {
@@ -107,7 +98,27 @@ function Profile() {
       toast.warning("Enter the Required Details");
     }
   };
-  
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [errorMessage, setErrorMessage1] = useState("");
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const allowedFormats = [
+        "image/png", "image/jpeg", "image/gif",
+      ];
+      const maxSize = 8 * 1024 * 1024; // 2MB
+
+      if (allowedFormats.includes(file.type) && file.size <= maxSize) {
+        setSelectedFile(file);
+        setErrorMessage1("");
+      } else {
+        setSelectedFile(null);
+        setErrorMessage1("Invalid file format or size exceeds 2MB.");
+      }
+    }
+  };
   return (
     <div>
       <nav class="navbar navbar-expand-sm navbar-dark shadow">
@@ -200,10 +211,28 @@ function Profile() {
           <div class="row">
             <div class="col-md-2">
               <div class="card profilecard">
-                <i
+                {/* <i
                   class=" fa-sharp fa-solid fa-circle-user profileicon mb-4 mt-3"
                   style={{ fontsize: "200px" }}
-                ></i>
+                ></i> */}
+                  <input
+                    type="file"
+                    accept="image/png,image/jpeg,image/gif"
+                    onClick={handleFileChange}
+                  />
+                  {errorMessage && (
+                    <p style={{ color: "red" }}>{errorMessage}</p>
+                  )}
+                  {selectedFile && (
+                    <div>
+                     
+                      <img
+            src={URL.createObjectURL(selectedFile)}
+            alt="Selected Image"class="rounded-circle" 
+            style={{ maxWidth: '100%', maxHeight: '200px',borderRadius:"10px" }}
+          />
+                    </div>
+                  )}
                 <Link to="/profile">
                   {" "}
                   <button
@@ -266,11 +295,11 @@ function Profile() {
                   placeholder="Enter your full nmae"
                   class="form-control w-100 mb-2"
                   style={{ border: "1px solid rgb(19, 19, 66)" }}
-                  onChange={(e) => setfullname(e.target.value)}
-                 
+                  onChange={handleNameChange}
+                  value={name}
                 />
                 {nameError && <span className="error mes">{nameError}</span>} 
-                {nameError && <span className="error mes">{nameError}</span>}
+                
                 <div>
                   <p class="profileh5">Experience</p>
                   <input
@@ -341,8 +370,8 @@ function Profile() {
                       placeholder="Enter your mobile number"
                       class="form-control w-100 p-2 profileselect"
                       style={{ border: "1px solid rgb(19, 19, 66)" }}
-                      onChange={(e) => setmobile(e.target.value)}
-                      value={mobile}
+                      onChange={handleMobileNumberChange}
+                      value={mobileNumber}
                     
                     />
                     {mobileNumberError && (

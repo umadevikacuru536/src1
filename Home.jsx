@@ -125,15 +125,11 @@ function Home1() {
       </div>
       <div class="container9 mb-5">
                 <div class="row">
-
-                    <div class="col-12 col-md-1">
-
+                    <div class="col-12 col-md-2">
                     </div>
-
                     <div class="col-12 col-md-10">
-                        <h6 class="topsearch">Top Searches</h6>
+                        <h class="topsearch">Top Searches</h>
                         <div class="card21 shadow p-2 m-3">
-
                             <div class="btngroup1 p-2 m-2">
                                 <button class="btn1 p-2 m-1" style={{width: "100px"}}>Banking</button>
                                 <button class="btn1 p-2 m-1"style={{width: "100px"}}>Sales</button>
@@ -164,7 +160,7 @@ function Home1() {
           <div class="col-12 col-md-1"></div>
 
           <div class="col-12 col-md-10  text-center search">
-            <h6 class="searchlocate text-start">Search By Location</h6>
+            <h6 class="searchlocate text-start" style={{marginLeft:"200px"}}>Search By Location</h6>
             <button class="imgbutton p-2 m-2">
               <img
                 src="https://www.indembassybern.gov.in/docs/1588678396_5.jpg"
@@ -243,7 +239,7 @@ function Home1() {
                 <h5 class="indus">Top Companies By Category</h5>
               </div>
 
-              <div class="d-flex flex-row row">
+              <div class="d-flex flex-row row ">
                 <div
                   class="jobCard shadow col-md-2"
                   style={{ width: "200px" }}
@@ -256,7 +252,7 @@ function Home1() {
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZAOLqO0ZPYOoXfNqSC-5gXklPGJwr8visCTunDV0QZmfqfm0_Lk6qOifnfmEo46G02Uk&usqp=CAU"
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
+                        style={{ width: "40px", padding: "5px" }}
                       />
                     </div>
                     <div>
@@ -264,7 +260,7 @@ function Home1() {
                         src={logo2}
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
+                        style={{ width: "40px", padding: "5px" }}
                       />
                     </div>
                     <div>
@@ -272,7 +268,7 @@ function Home1() {
                         src="https://w7.pngwing.com/pngs/443/269/png-transparent-logo-brand-fedex-product-desktop-hermes-staff-text-orange-logo.png"
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
+                        style={{ width: "40px", padding: "5px" }}
                       />
                     </div>
                     <div>
@@ -280,7 +276,7 @@ function Home1() {
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd0eI_MIAENiYLJlj05dGXUhgxt14UbTy7eHIc5kvUGw&s"
                         class="logoCard"
                         alt=""
-                        style={{ width: "20px" }}
+                        style={{ width: "40px" }}
                       />
                     </div>
                   </div>
@@ -297,31 +293,28 @@ function Home1() {
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZAOLqO0ZPYOoXfNqSC-5gXklPGJwr8visCTunDV0QZmfqfm0_Lk6qOifnfmEo46G02Uk&usqp=CAU"
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
-                      />
+                        style={{ width: "40px", padding: "5px" }}                      />
                     </div>
                     <div>
                       <img
                         src={logo2}
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
-                      />
+                        style={{ width: "40px", padding: "5px" }}                      />
                     </div>
                     <div>
                       <img
                         src="https://w7.pngwing.com/pngs/443/269/png-transparent-logo-brand-fedex-product-desktop-hermes-staff-text-orange-logo.png"
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
-                      />
+                        style={{ width: "40px", padding: "5px" }}                      />
                     </div>
                     <div>
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd0eI_MIAENiYLJlj05dGXUhgxt14UbTy7eHIc5kvUGw&s"
                         class="logoCard"
                         alt=""
-                        style={{ width: "20px" }}
+                        style={{ width: "40px" }}
                       />
                     </div>
                   </div>
@@ -338,31 +331,28 @@ function Home1() {
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZAOLqO0ZPYOoXfNqSC-5gXklPGJwr8visCTunDV0QZmfqfm0_Lk6qOifnfmEo46G02Uk&usqp=CAU"
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
-                      />
+                        style={{ width: "40px", padding: "5px" }}                      />
                     </div>
                     <div>
                       <img
                         src={logo2}
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
-                      />
+                        style={{ width: "40px", padding: "5px" }}                      />
                     </div>
                     <div>
                       <img
                         src="https://w7.pngwing.com/pngs/443/269/png-transparent-logo-brand-fedex-product-desktop-hermes-staff-text-orange-logo.png"
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
-                      />
+                        style={{ width: "40px", padding: "5px" }}                      />
                     </div>
                     <div>
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd0eI_MIAENiYLJlj05dGXUhgxt14UbTy7eHIc5kvUGw&s"
                         class="logoCard"
                         alt=""
-                        style={{ width: "20px" }}
+                        style={{ width: "40px" }}
                       />
                     </div>
                   </div>
@@ -379,16 +369,14 @@ function Home1() {
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZAOLqO0ZPYOoXfNqSC-5gXklPGJwr8visCTunDV0QZmfqfm0_Lk6qOifnfmEo46G02Uk&usqp=CAU"
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
-                      />
+                        style={{ width: "40px", padding: "5px" }}                      />
                     </div>
                     <div>
                       <img
                         src={logo2}
                         class="logoCard"
                         alt=""
-                        style={{ width: "30px", padding: "5px" }}
-                      />
+style={{ width: "40px", padding: "5px" }}                      />
                     </div>
                     <div>
                       <img
@@ -423,7 +411,7 @@ function Home1() {
           <div class="col-md-1"></div>
         </div>
       </div>
-      <div class="container">
+      {/* <div class="container">
         <div class="row">
           <div class="col-md-1"></div>
           <div class="col-md-12 div">
@@ -435,7 +423,7 @@ function Home1() {
                     class="joblogo"
                   />
                 </div>
-                <div class="col-md-8 d-flex flex-column">
+                <div class="col-md-7 d-flex flex-column">
                   <div>
                     <h3 class="skillHead p-2">SELL YOUR SKILLS</h3>
                   </div>
@@ -449,7 +437,36 @@ function Home1() {
               </div>
             </div>
           </div>
-          <div class="col-md-1"></div>
+          <div class="col-md-2"></div>
+        </div>
+      </div> */}
+        <div class="container">
+        <div class="row">
+          {/* <div class="col-md-1"></div> */}
+          <div class="col-md-12">
+            <div class="container skills div m-4">
+              <div class="row d-flex flex-row">
+                <div class="col-md-4 mt-3">
+                  <img
+                    src="https://www.jobsoid.com/wp-content/uploads/2022/01/21-Fun-Ways-to-Boost-Employee-Morale-blog-640x428.jpg"
+                    class="joblogo"
+                  />
+                </div>
+                <div class="col-md-8 d-flex flex-column">
+                  <div>
+                  <h3 class="skillHead p-2">SELL YOUR SKILLS</h3>
+                  </div>
+                  <div>
+                  <p class="skillPara p-2" style={{ color: "white" }}>
+                      what if you could use your skill and talent to earn money?
+                      So that you can live the life you love?
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <div class="col-md-1"></div> */}
+          </div>
         </div>
       </div>
       <div class="container">
@@ -676,11 +693,11 @@ function Home1() {
                     type="text"
                     className="input mx-3 my-2"
                     placeholder="Enter Your Mobile Number"
-                    class="w-100 p-1"
+                    class="w-75 p-1 abs"
                   />
                 </div>
                 <div>
-                  <button class="bg-warning p-1 mx-3 my-1">
+                  <button class="bg-warning bgt">
                     Get call back
                   </button>
                 </div>

@@ -64,6 +64,8 @@ function Home2(props) {
       setblogslist(response.data);
       if (state?.location) {
         handleFilter(state?.location, response.data);
+      }if(response.data.length> 0){
+        setselectedblog(response.data[0])
       }
       
     } catch (error) {
@@ -726,7 +728,7 @@ function Home2(props) {
                   <br />
                   <div className="row">
                     {selectedblog && (
-                      <div className="card5 d-flex flex-column scroll">
+                      <div className="card413  scroll d-flex flex-column ">
                         <h5>Job Description</h5>
                         <h6>Roles and Responsibilities</h6>
                         <p>{selectedblog.description}</p>
@@ -735,7 +737,7 @@ function Home2(props) {
                         <h1>cities</h1>
                         <p>{selectedblog.cities}</p>
                       </div>
-                      // siva
+                     
                     )}
                   </div>
                 </div>

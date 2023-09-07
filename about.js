@@ -95,11 +95,12 @@ function About() {
               <input type="text" name="" id="" class="logininput w-75" placeholder="enter your email ID"  onChange={(e) => setemail (e.target.value)}
                     value={email} /><br />
               <label for="" class="loginpassword">password</label><br />
-              <input type="password" name="" id="" class="logininput w-75" placeholder="enter your password" onChange={(e) => setpassword(e.target.value)}
+              <input  type= "text" name="" id="" class="logininput w-75" placeholder="enter your password" onChange={(e) => setpassword(e.target.value)}
                     value={password}/>
-              <i class="fa-solid fa-eye eyeicon"></i>
+              {/* <i class="fa-solid fa-eye eyeicon"></i> */}
+              
              <Link to="/forgot"> <a href="./forgot password.html" style={{ color: "white" }}><p class="loginforgot">Forgot password?</p></a></Link>
-              <a href="/home"><button class="loginbutton">Login</button></a>
+              <a href="/home"><button class="loginbutton" > Login</button></a>
               </div>
               <Link to="/loginotp"><a href="./loginOTP .html" style={{ color: "white" }}><h6 class="loginh4">Login via OTP</h6></a></Link>
               <span class="logingoogle"><button class="loginbutton2 shadow"><img
@@ -110,9 +111,9 @@ function About() {
             </div>
           </div>
 
-
+      
           
-          {/* <div class=" col-12 col-md-4 remove">
+          <div class="col-12 col-md-4 remove">
             <div class=" card1 d-flex flex-column ">
               <h2 class="pabjobheading">New to pabjobs?</h2>
               <img src="https://static.vecteezy.com/system/resources/thumbnails/003/689/228/small/online-registration-or-sign-up-login-for-account-on-smartphone-app-user-interface-with-secure-password-mobile-application-for-ui-web-banner-access-cartoon-people-illustration-vector.jpg"
@@ -125,7 +126,7 @@ function About() {
              <Link to="/"> <a href="./index.html" style={{ color: "white" }}><button class="Register shadow d-none d-md-block" style={{ padding: "10px" }}> Register for free</button></a></Link>
             </div>
 
-          </div> */}
+          </div>
         </div>
 
       </div>

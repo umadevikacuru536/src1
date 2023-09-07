@@ -54,12 +54,12 @@ function Loginotp(){
                         <h2 class="pabjobheading">New to pabjobs?</h2>
                         <img src="https://static.vecteezy.com/system/resources/thumbnails/003/689/228/small/online-registration-or-sign-up-login-for-account-on-smartphone-app-user-interface-with-secure-password-mobile-application-for-ui-web-banner-access-cartoon-people-illustration-vector.jpg"
                             alt="" style={{height:'200px', width:'400px', borderRadius:'20px'}}/>
-                         
+           
                        <p class="para4" ><i class="fa-solid fa-circle-check janlogin" style={{padding:'10px'}}></i>Build your profile and let recruitrs find yon</p> 
                        <p class="para4" ><i class="fa-solid fa-circle-check janlogin" style={{padding:'10px'}}></i> Get job posting delivered right to your email</p> 
                        <p class="para4" ><i class="fa-solid fa-circle-check janlogin" style={{padding:'10px'}}></i> Find a job and grow your career</p>
                        <p class="para4"> <i class="fa-solid fa-circle-check janlogin" style={{padding:'10px'}}></i>Find a job and grow your career</p>
-                     <Link to="/">       <a href="./index.html" style={{color: 'white'}}><button class="Register shadow d-none d-md-block" style={{padding:'10px' ,color:'#2c0264 '}}> Register for free</button></a></Link>
+                     <Link to="/"> <a href="./index.html" style={{color: 'white'}}><button class="Register shadow d-none d-md-block" style={{padding:'10px' ,color:'#2c0264 '}}> Register for free</button></a></Link>
                     </div>
                     
                 </div>

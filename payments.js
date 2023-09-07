@@ -1,4 +1,4 @@
-import './App.css'
+import "./App.css";
 import logo from "./pabjobs-logo.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -6,11 +6,11 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Payments() {
+  const [error, setErrorMessage] = useState([]);
   const [fullname, setfullname] = useState("");
-  const [email, setState] = useState("");
-  const [mobilenumber, setCurrentlocation] = useState("");
-  const [amount, setmobile] = useState("");
-  
+  const [email, setemail] = useState("");
+  const [mobilenumber, setMobileNumber] = useState("");
+  const [amount, setAmount] = useState("");
 
   const [data, setdata] = useState([]);
   const useData1 = {
@@ -22,23 +22,17 @@ function Payments() {
   console.log(useData1);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (! fullname && !email &&mobilenumber&&amount) {
+    if (!fullname && !email && mobilenumber && amount) {
       // Perform your submit logic here
       setErrorMessage("Form submitted successfully");
     } else {
       setErrorMessage("Form submission failed. Please check errors.");
     }
 
-    if (
-      fullname &&
-      State &&
-      Currentlocation &&
-      mobile &&
-      emailE1 !== ""
-    ) {
+    if (fullname && email && mobilenumber && amount !== "") {
       const headers = {
-        token :
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZDBhMGJhOTZkMTA5YTFhNzZkNzMiLCJpYXQiOjE2OTExNDQzOTV9.tX4qCPXSptfwgk1C6dIhOVgB6ffWwGhOgClGkZluU9s"
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZDBhMGJhOTZkMTA5YTFhNzZkNzMiLCJpYXQiOjE2OTExNDQzOTV9.tX4qCPXSptfwgk1C6dIhOVgB6ffWwGhOgClGkZluU9s",
       };
       axios
         .post("http://localhost:5010/profile", useData1, { headers })
@@ -66,9 +60,9 @@ function Payments() {
       toast.warning("Enter the Required Details");
     }
   };
-    return (
-        <div>
-            <nav class="navbar navbar-expand-sm navbar-dark shadow">
+  return (
+    <div>
+      <nav class="navbar navbar-expand-sm navbar-dark shadow">
         <div class="container">
           <img
             src={logo}
@@ -89,7 +83,7 @@ function Payments() {
             style={{ marginleft: "500px" }}
           >
             <ul class="navbar-nav" style={{ marginleft: "500px" }}>
-              <li class="nav-item" style={{marginLeft:"400px"}}>
+              <li class="nav-item" style={{ marginLeft: "400px" }}>
                 <Link to="/home" style={{ color: "white" }}>
                   <a class="nav-link " href="" style={{ color: "black" }}>
                     Home
@@ -145,22 +139,23 @@ function Payments() {
                 <i class="fa-solid fa-bell bellicon"></i>
               </li>
               <li class="nav-item">
-              <Link to="/profile">
-                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i></Link>
-               
+                <Link to="/profile">
+                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-            <div class="bg-container">
-                <div class="d-flex flex-row">
-                    <div class="col-md-1"></div>
-                    <div class=" col-12 col-md-6">
-                        <div class="card" style={{ borderradius: "20px",width:"40vw" }}>
-
-                            <h1 class="heading" style={{ textalign: "center" }}>Payment Request</h1>
-                            <ToastContainer
+      <div class="bg-container">
+        <div class="d-flex flex-row">
+          <div class="col-md-1"></div>
+          <div class=" col-12 col-md-6">
+            <div class="card" style={{ borderradius: "20px", width: "40vw" }}>
+              <h1 class="heading" style={{ textalign: "center" }}>
+                Payment Request
+              </h1>
+              <ToastContainer
                 position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -172,51 +167,104 @@ function Payments() {
                 pauseOnHover
                 theme="colored"
               />
-                            <div> 
-                                <div class="mb-3 mt-3">
-                                    <label for=" Name" class="form-label" id="fullname"> Name</label><br />
-                                    <input type="text" class="control w-75 " id="email" style={{ padding: "10px " }}
-                                        placeholder="Enter your full Name" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Email id" class="form-label">Email ID</label><br />
-                                    <input type="text" class="control w-75" id="pwd" style={{ padding: "10px" }}
-                                        placeholder="Enter your Email ID" />
-                                </div>
-
-                                <label class="form-label">moblie Number</label><br />
-
-                                <div class="">
-                                    <select style={{ width: "55px", height: "40px", borderradius: "20px",marginRight:"5px" }}>
-                                        <option>+91</option>
-                                    </select>
-                                    <input type="text" class="control1 w-70" style={{ padding: "10px" }}
-                                        placeholder="Enter your moblie number" />
-                                </div>
-
-
-                                <div class="mb-3 mt-3">
-                                    <label for=" Name" class="form-label" id="fullname">Amount</label><br />
-                                    <input type="text" class="control w-75" id="email" style={{ padding: "10px" }}
-                                        placeholder="Enter amount in rupees" />
-                                </div>
-
-                                <button type="Register" class="button1" style={{ width: "450px" }}>Make Payment</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class=" col-12 col-md-5 remove">
-                        <div class=" card1 d-flex flex-column">
-                            <img src="https://static.vecteezy.com/system/resources/thumbnails/009/646/297/small_2x/e-wallet-digital-payment-online-transaction-with-woman-standing-and-holding-mobile-phone-concept-illustration-free-vector.jpg"
-                                alt="pic" class="image2" style={{ height: "500px", width: "400px" }} id="img" />
-
-                        </div>
-                    </div>
+              <div onClick={handleSubmit}>
+                <div class="mb-3 mt-3">
+                  <label for=" Name" class="form-label" id="fullname">
+                    {" "}
+                    Name
+                  </label>
+                  <br />
+                  <input
+                    type="text"
+                    class="control w-75 "
+                    id="email"
+                    style={{ padding: "10px " }}
+                    placeholder="Enter your full Name"
+                    onChange={(e) => setfullname(e.target.value)}
+                    value={fullname}
+                  />
                 </div>
+                <div class="mb-3">
+                  <label for="Email id" class="form-label">
+                    Email ID
+                  </label>
+                  <br />
+                  <input
+                    type="text"
+                    class="control w-75"
+                    id="pwd"
+                    style={{ padding: "10px" }}
+                    placeholder="Enter your Email ID"
+                    onChange={(e) => setemail(e.target.value)}
+                    value={email}
+                  />
+                </div>
+
+                <label class="form-label">moblie Number</label>
+                <br />
+
+                <div class="">
+                  <select
+                    style={{
+                      width: "55px",
+                      height: "40px",
+                      borderradius: "20px",
+                      marginRight: "5px",
+                    }}
+                  >
+                    <option>+91</option>
+                  </select>
+                  <input
+                    type="text"
+                    class="control1 "
+                    style={{ padding: "10px",width:"420px" }}
+                    placeholder="Enter your moblie number"
+                    onChange={(e) => setMobileNumber(e.target.value)}
+                    value={mobilenumber}
+                  />
+                </div>
+
+                <div class="mb-3 mt-3">
+                  <label for=" Name" class="form-label" id="fullname">
+                    Amount
+                  </label>
+                  <br />
+                  <input
+                    type="text"
+                    class="control w-75"
+                    id="email"
+                    style={{ padding: "10px" }}
+                    placeholder="Enter amount in rupees"
+                    onChange={(e) => setAmount(e.target.value)}
+                    value={amount}
+                  />
+                </div>
+
+                <button
+                  type="Register"
+                  class="button1"
+                  style={{ width: "450px" }}
+                >
+                  Make Payment
+                </button>
+              </div>
             </div>
+          </div>
+
+          <div class=" col-12 col-md-5 remove">
+            <div class=" card1 d-flex flex-column">
+              <img
+                src="https://static.vecteezy.com/system/resources/thumbnails/009/646/297/small_2x/e-wallet-digital-payment-online-transaction-with-woman-standing-and-holding-mobile-phone-concept-illustration-free-vector.jpg"
+                alt="pic"
+                class="image2"
+                style={{ height: "500px", width: "400px",marginTop:"40px" }}
+                id="img"
+              />
+            </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 export default Payments;
