@@ -6,7 +6,10 @@ import { useNavigate } from "react-router-dom";
 import axios, { Axios } from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import img from "./Image 3.png";
+import img1 from "./Tablet login-rafiki.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 function Register() {
   const [type, settype] = useState("");
   const [fullname, setname] = useState("");
@@ -15,7 +18,12 @@ function Register() {
   const [confirmpassword, setconfirmpassword] = useState("");
   const [mobilenumber, setmobilenumber] = useState("");
   const [error, setErrorMessage] = useState([]);
+  const [showPassword, setShowPassword] = useState(false);
+ 
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   let navigate = useNavigate();
   const [data, Setdata] = useState([]);
 
@@ -77,6 +85,9 @@ function Register() {
     } else {
       setconfirmpasswordError("");
     }
+  };
+  const arePasswordsMatching = () => {
+    return password1 === confirmpassword1;
   };
 
   const handleconfirmPasswordChange = (e) => {
@@ -227,12 +238,12 @@ function Register() {
           </div>
         </nav>
         <div class="bg-container">
+          
           <div class="row">
             <div className="col-12 col-md-1"></div>
-            <div class="col-12 col-md-5">
-              <div
-                class="yedookati"
-              >
+           
+            <div class="col-12 col-md-5 yedookati">
+             
                 <h1 class="heading">Create an account</h1>
                 <p
                   class="para1 heading"
@@ -240,6 +251,7 @@ function Register() {
                 >
                   It only takes a couple of minutes to get started!
                 </p>
+                <div className="swathi">
                 <div class="d-flex flex-row">
                   <Link to="/about">
                     <a href="./about">
@@ -266,7 +278,8 @@ function Register() {
                       type="button"
                       class="btn3"
                       id="jobseeker"
-                      onclick="Button1()"
+                      onclick="Button1()" name="type"
+                     
                     >
                       Job Seekers
                       <input
@@ -281,11 +294,12 @@ function Register() {
                   </div>
 
                   <div>
-                    <button
+                  <button
                       type="button"
                       class="btn4"
                       id="recruiters"
-                      onclick="Button2()"
+                      onclick="Button2()"name="type"
+                    
                     >
                       Recruiters
                       <input
@@ -298,6 +312,7 @@ function Register() {
                       />
                     </button>
                   </div>
+                </div>
                 </div>
                 <ToastContainer
                   position="top-right"
@@ -313,9 +328,9 @@ function Register() {
                 />
                 {/* Same as */}
                 <ToastContainer />
-                <form class="mb-3 mt-3 p-5" onSubmit={onSubmitForm}>
+                <form class="mb-3  p-5" onSubmit={onSubmitForm}>
                   <label for="Full Name" class="form-label" id="fullname">
-                    {type === "applicant" ? "Fullname" : "company Name"}
+                    {type === "recruiter" ? "company Name" : "Full Name"}
                   </label>
                   <br />
                   <input
@@ -324,9 +339,9 @@ function Register() {
                     id="email"
                     style={{ padding: "10px" }}
                     placeholder={
-                      type === "applicant"
-                        ? "Enter your full name"
-                        : "Enter Company Name"
+                      type === "recruiter"
+                        ? "Enter your company name"
+                        : "Enter your full name"
                     }
                     onChange={(e) => setname(e.target.value)}
                     value={fullname}
@@ -352,24 +367,18 @@ function Register() {
                     <label for="password" class="form-label">
                       Password
                     </label>
-                    <br />
-                    {/* <input
-                    type="password"
-                    class="control"
-                    id="pwd"
-                    style={{ padding: "10px" }}
-                    placeholder="Minimum 6 characters"
-                    onChange={(e) => setpassword(e.target.value)}
-                    value={password}
-                  /> */}
+                   
+                  
                     <input
-                      type=""
-                      className="control14"
-                      style={{ padding: "10px" }}
-                      placeholder="Enter your password"
-                      onChange={handlePasswordChange}
-                      value={password1}
-                    /><br />
+        type={showPassword ? 'text' : 'password'}
+        value={password1}
+        class="control"
+        style={{ padding: "10px" }}
+        placeholder="Minimum 6 characters"
+        onChange={handlePasswordChange}
+      /> <i className="password-toggle" onClick={togglePasswordVisibility}>
+      <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+    </i><br />
                     {passwordError && (
                       <span className="error mes">{passwordError}</span>
                     )}
@@ -382,35 +391,32 @@ function Register() {
                     </label>
                     <br />
                     <input
-                      type=""
+                    type={showPassword ? 'text' : 'password'}
                       class="control"
                       id="pwd"
                       style={{ padding: "10px" }}
                       placeholder="Minimum 6 characters"
                       onChange={handleconfirmPasswordChange}
                       value={confirmpassword1}
-                    />
+                    /><i className="password-toggle" onClick={togglePasswordVisibility}>
+                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                  </i>
+                    
                     {confirmpasswordError && (
                       <span className="error mes">{confirmpasswordError}</span>
                     )}
                   </div>
+                  {arePasswordsMatching() ? null : (
+        <span className="error mes">Password and Confirm Password must match.</span>
+      )}<br/>
                   <label class="form-label">moblie Number</label>
                   <br />
 
                   <div class="">
-                    <select style={{ width: "50px", height: "40px" }}>
+                    <select style={{ width: "60px", height: "40px",marginLeft:"80px" }}>
                       <option>+91</option>
                     </select>
-                    {/* <input
-                    type="text"
-                    class="control1"
-                    placeholder="Enter your moblie number"
-                    onChange={(e) => setmobilenumber(e.target.value)}
-                    value={mobilenumber}
-                  />
-                  {mobileNumberError && (
-                      <span className="error mes">{mobileNumberError}</span>
-                    )} */}
+                  
                     <input
                       type="text"
                       className="control1"
@@ -423,8 +429,8 @@ function Register() {
                     )}
                   </div>
 
-                  <div class="mb-3" id="gender">
-                    <label for="password" class="form-label">
+                  <div class="mb-3 abc" id="gender">
+                    <label for="password" class="">
                       Gender
                     </label>
                     <br />
@@ -446,7 +452,7 @@ function Register() {
                     <label for="perfer not to say">Perfer Not to say</label>
                   </div>
 
-                  <p>
+                  <p className="abc">
                     <i
                       class="fa-solid fa-square-check"
                       style={{ color: "green" }}
@@ -454,37 +460,37 @@ function Register() {
                     I would to get lates jobupdates on whatsapp
                   </p>
 
-                  <p>
+                  <p className="abc">
 
                     By checking Register you agree to the treams and conditions &
                     privacy polices of pabjobs.com
                   </p>
-                  <button type="Register" class="button1">
-                    Register Now
-                  </button>
+                  <button class="{type === 'applicant' ? 'jobsikar' : 'company login'} button14">
+    Register Now
+</button>
 
-                  {/* <div class="devi d-flex flex-row">
-                  <p class=" d-md-none">
-                    Browser Jobs <i class="fa-solid fa-caret-down"></i>
-                  </p>
-                  <p class=" d-md-none">
-                    {" "}
-                    Jobs <i class="fa-solid fa-caret-down"></i>
-                  </p>
-                </div> */}
+                
                 </form>
-              </div>
+             
             </div>
             <div className="col-12 col-md-1"></div>
             <div class=" col-12 col-md-4 remove">
               <div class="card10 d-flex flex-column">
-                <img
-                  src="https://img.freepik.com/free-vector/cartoon-businesswoman-working-with-laptop-gesture-pose-clip-art_40876-3410.jpg?w=740&t=st=1688473755~exp=1688474355~hmac=64ec18489a150033b1aa5a5563732988b61d2b536b407124f57d6a936b40606f"
+               
+                                    {type === "recruiter" ?  <div> <img
+                  src={img1}
                   alt="pic"
-                  class="image2 w-75"
+                  class="image2"
 
                   id="img"
-                />
+                /></div>: <div> <img
+                  src={img}
+                  alt="pic"
+                  class="image2"
+
+                  id="img"
+                /></div>}
+
                 <div className="my-5">
                   <p class="para4">
                     <i

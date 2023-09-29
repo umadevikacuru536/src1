@@ -1,7 +1,29 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import logo from "./img/pabjobs-logo.png";
+import axios from "axios";
+import { useEffect, useState } from "react";
 function Savedjobs() {
+  const [saved, setsaved] = useState([]);
+ useEffect(() => {
+    fetchblogs();
+  }, []);
+
+  const fetchblogs = async () => {
+    const api = "http://localhost:5010/allsavedjobs";
+    const authToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZDBhMGJhOTZkMTA5YTFhNzZkNzMiLCJpYXQiOjE2OTExNDQzOTV9.tX4qCPXSptfwgk1C6dIhOVgB6ffWwGhOgClGkZluU9s";
+    try {
+      const response = await axios.get(api, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+      setsaved(response.data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }
+  }; 
   return (
    <div>
     <nav class="navbar navbar-expand-sm navbar-dark shadow">
@@ -90,8 +112,8 @@ function Savedjobs() {
         </div>
       </nav>
     <div className="container ">
-      <div className="d-flex flex-row">
-        <div className="col-12 col-md-3 card profilecard">
+      <div className="row">
+        <div className="col-12 col-sm-12 col-md-3 col-lg-6 profilecard">
            
             <i
               class=" fa-sharp fa-solid fa-circle-user profileicon mb-4 mt-3"
@@ -106,12 +128,13 @@ function Savedjobs() {
                 <Link to="/changepassword"><button class="p-2 mb-1 profilebutton w-75">Change Password</button></Link>
                 <Link to="/about"><button class="p-2 mb-1 profilebutton w-75">Log Out</button></Link>
         </div>
-        <div className="col-12 col-md-9">
-        <div className="col-md-10">
-            <div class="card profilecard2 p-3">
-              <h6>saved Jobs</h6>
+        <div className="col-md-1"></div>
+        <div className="col-12 col-sm-12 col-md-9 col-lg-6">
+        
+            <div class="profilecard23 scroll p-3">
+              <h6>{saved.length}saved Jobs</h6>
               <hr />
-              <div class="card grapicscard p-1  ">
+              {/* <div class="grapicscard p-1  ">
                 <div class=" d-flex flex-row ">
                   <div
                     class="d-flex flex-row col-md-6"
@@ -155,7 +178,7 @@ function Savedjobs() {
                   </div>
                 </div>
               </div>
-              <div class="card grapicscard p-1  ">
+              <div class=" grapicscard p-1  ">
                 <div class=" d-flex flex-row ">
                   <div
                     class="d-flex flex-row col-md-6"
@@ -198,9 +221,91 @@ function Savedjobs() {
                     <button class="domain p-2 w-75 mt-3">Applied</button>
                   </div>
                 </div>
-              </div>
+              </div> */}
+              
+              {saved.map((blog) => (
+                      <div className="d-flex flex-column mb-4  maa">
+                        <div className="d-flex flex-row">
+                          <div className="col-md-2 ">
+                            <img
+                              src={blog.Img}
+                              alt=""
+                              className="w-75"
+                              style={{ marginTop: "20px" }}
+                            />
+                          </div>
+                          <div className="col-md-4 margin">
+                            <h5>{blog.title}</h5>
+                            <p>{blog.companyname}</p>
+                            <p
+                              class="m-0 Show"
+                              style={{
+                                color: "rgb(88,6,109)",
+                                fontSize: "10px",
+                              }}
+                            >
+                              Show more jobs in the company
+                            </p>
+                          </div>
+                          <div className="col-md-5 margin1">
+                            <h6
+                              style={{ marginLeft: "30px", marginTop: "10px" }}
+                            >
+                              {blog.salary}
+                              <i
+                                class="fa-solid fa-bookmark book"
+                                id="bookItem"
+                                style={{ marginLeft: "120px" }}
+                              ></i>
+                            </h6>
+                            <p class="m-0">
+                              <i
+                                class="fa-solid fa-location-dot"
+                                style={{
+                                  marginLeft: "20px",
+                                  marginRight: "8px",
+                                }}
+                              ></i>
+                              {blog.cities}
+                            </p>
+                            <p class="m-0">
+                              <i
+                                class="fa-solid fa-briefcase"
+                                style={{
+                                  marginLeft: "20px",
+                                  marginRight: "10px",
+                                }}
+                              ></i>
+                              {blog.experience}
+                            </p>
+                          </div>
+                        </div>
+                        <hr />
+                        <div className="d-flex flex-row">
+                          <div className="col-md-7">
+                            <p class="m-0">Posted: Few Hours Ago</p>
+                            <p class="m-0">Openings:1</p>
+                            <p class="m-0">Job Application:580</p>
+                          </div>
+                          <div className="col-md-3">
+                            <button
+                              class="now-item w-100"
+                              style={{
+                                backgroundColor: "#5b13b9",
+                                borderRadius: "10px",
+                                color: "white",
+                              }}
+                              id="applyItem"
+                              onclick="applyBtn()"
+                            >
+                              Apply Now
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
             </div>
-          </div>
+      
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import logo from "./img/pabjobs-logo.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-
+import img from "./img/user.png"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Profile() {
@@ -103,16 +103,17 @@ function Profile() {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-
+const imgs = document.getElementById("img").style.display="none"
     if (file) {
       const allowedFormats = [
         "image/png", "image/jpeg", "image/gif",
       ];
       const maxSize = 8 * 1024 * 1024; // 2MB
-
+const file1 = document.getElementById("file").style.display="none"
       if (allowedFormats.includes(file.type) && file.size <= maxSize) {
         setSelectedFile(file);
         setErrorMessage1("");
+        
       } else {
         setSelectedFile(null);
         setErrorMessage1("Invalid file format or size exceeds 2MB.");
@@ -120,7 +121,7 @@ function Profile() {
     }
   };
   return (
-    <div>
+    <div id="#6">
       <nav class="navbar navbar-expand-sm navbar-dark shadow">
         <div class="container">
           <img
@@ -210,12 +211,14 @@ function Profile() {
         <div class="container">
           <div class="row">
             <div class="col-md-2">
-              <div class="card profilecard">
+              <div class="profilecard">
+                <img src={img} id="img" class="img-circle" alt="Cinque Terre"  />
                 {/* <i
                   class=" fa-sharp fa-solid fa-circle-user profileicon mb-4 mt-3"
                   style={{ fontsize: "200px" }}
                 ></i> */}
                   <input
+                  id="file"
                     type="file"
                     accept="image/png,image/jpeg,image/gif"
                     onClick={handleFileChange}
@@ -284,7 +287,7 @@ function Profile() {
                 pauseOnHover
                 theme="colored"
               />
-              <form class="card profilecard1 p-3 " onSubmit={handleSubmit}>
+              <form class="profilecard1 p-3 " onSubmit={handleSubmit}>
                 <h6 class="profileh5">Basic Information</h6>
                 <hr />
                 <label for="" class="profilename mb-1">

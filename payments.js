@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import img from './Credit-card.jpg';
 function Payments() {
   const [error, setErrorMessage] = useState([]);
   const [fullname, setfullname] = useState("");
@@ -147,11 +148,11 @@ function Payments() {
           </div>
         </div>
       </nav>
-      <div class="bg-container">
+      <div class="bg-container41">
         <div class="d-flex flex-row">
           <div class="col-md-1"></div>
           <div class=" col-12 col-md-6">
-            <div class="card" style={{ borderradius: "20px", width: "40vw" }}>
+            <div class="card">
               <h1 class="heading" style={{ textalign: "center" }}>
                 Payment Request
               </h1>
@@ -205,19 +206,14 @@ function Payments() {
 
                 <div class="">
                   <select
-                    style={{
-                      width: "55px",
-                      height: "40px",
-                      borderradius: "20px",
-                      marginRight: "5px",
-                    }}
+                   style={{ width: "60px", height: "40px",marginLeft:"80px" }}
                   >
                     <option>+91</option>
                   </select>
                   <input
                     type="text"
-                    class="control1 "
-                    style={{ padding: "10px",width:"420px" }}
+                    class="control1"
+                    style={{ padding: "10px",width:"370px" }}
                     placeholder="Enter your moblie number"
                     onChange={(e) => setMobileNumber(e.target.value)}
                     value={mobilenumber}
@@ -251,16 +247,12 @@ function Payments() {
             </div>
           </div>
 
-          <div class=" col-12 col-md-5 remove">
-            <div class=" card1 d-flex flex-column">
-              <img
-                src="https://static.vecteezy.com/system/resources/thumbnails/009/646/297/small_2x/e-wallet-digital-payment-online-transaction-with-woman-standing-and-holding-mobile-phone-concept-illustration-free-vector.jpg"
-                alt="pic"
-                class="image2"
-                style={{ height: "500px", width: "400px",marginTop:"40px" }}
-                id="img"
-              />
-            </div>
+          <div class="col-12 col-md-5 remove">
+            
+              <img src={img}class="image2"
+                style={{ height: "500px", width: "400px",marginTop:"80px",borderRadius:"10px" }}
+                id="img"/>
+            
           </div>
         </div>
       </div>

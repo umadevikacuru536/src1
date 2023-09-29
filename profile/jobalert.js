@@ -90,8 +90,8 @@ function Jobalert(){
         </div>
       </nav>
      <div className="container ">
-      <div className="d-flex flex-row">
-        <div className="col-12 col-md-3 card profilecard">
+      <div className="row">
+        <div className="col-12 col-sm-12 col-md-3 col-lg-6 profilecard">
            
             <i
               class=" fa-sharp fa-solid fa-circle-user profileicon mb-4 mt-3"
@@ -106,9 +106,10 @@ function Jobalert(){
                 <Link to="/about"><button class="p-2 mb-1 profilebutton w-75">Log Out</button></Link>
            
         </div>
-        <div className="col-12 col-md-9">
-        <div className="col-md-10">
-            <div class="card profilecard2 p-3">
+        <div className='col-md-1'></div>
+        <div className="col-12 col-md-9 col-lg-6">
+     
+            <div class="profilecard2 p-3">
             <h6 class="">Job Alert</h6>
                     <div class="devi d-flex flex-row  ">
                     <h6 class="mt-3 p-2">Sort</h6><br/>
@@ -121,7 +122,7 @@ function Jobalert(){
              </div> 
             </div>
             
-          </div>
+          
         </div>
       </div>
     </div>

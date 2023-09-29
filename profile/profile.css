@@ -22,12 +22,18 @@
     font-weight: bold;
     text-align: start;
   }
+  .uma12{
+     background: #F8F2FB;
+    
+  }
   .fresher{
     text-align: start;
   }
-  .profileselect{
+  .form-control{
     border-radius: 10px;
+    border: 1px  solid #604a7c; 
   }
+  
   .profilebutton1{
     background-color: rgb(19, 19, 66);
     color: white;
@@ -39,13 +45,23 @@
 
 .profilecard{
     width: 400px;
-    height: 750px;
-    justify-content: center;
-    
+    height: 650px;
+   text-align: center;
+   padding-top: 50px;
+   margin-top: 80px;
+   margin-bottom: 30px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 15px #00000012;
+border-radius: 10px;
 }
 .profilecard1{
   width: 500px;
   height: 600px;
+  margin-top: 80px;
+  margin-bottom: 30px;
+   background: #FFFFFF 0% 0% no-repeat padding-box;
+   box-shadow: 0px 0px 15px #00000012;
+border-radius: 10px;
   
 }
 
@@ -73,15 +89,48 @@ font-weight: bold;
     border: none;
 }
 .devi{
-    margin-left: 260px;
+    margin-left: 400px;
+}
+.jobalert{
+  margin-top: 40px;
 }
 .grapicscard{
-  height: 315px;
+  height: 310px;
   width: 600px;
-  
+  margin-bottom: 10px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 15px #00000012;
+    border-radius: 10px;
+    opacity: 1;
 }
 .profilecard2{
-  height: 750px;
+    height: 650px;
+    margin-top: 50px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 15px #00000012;
+    border-radius: 20px;
+    opacity: 1;
+}
+.profilecard3{
+  height: 650px;
+  margin-top: 50px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #00000012;
+  border-radius: 10px;
+  opacity: 1;
+}
+.profilecard23{
+  height: 730px;
+  margin-top: 80px;
+  margin-bottom: 30px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #00000012;
+  border-radius: 10px;
+  opacity: 1;
+}
+.img-circle{
+  border-radius: 50%;
+  width: 200px;
 }
 .profilecard7{
   margin-left: 100px;
@@ -97,12 +146,37 @@ font-weight: bold;
 .profilecardi{
   width: 400px;
     height: 500px;
-    justify-content: center;
+    padding-top: 35px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    margin-left:80px;
+     background: #FFFFFF 0% 0% no-repeat padding-box;
+     box-shadow: 0px 0px 15px #00000012;
+     border-radius: 20px;
+     opacity: 1;
 }
-.resumebtn{
+.resumupload
+{
+  margin-top: 80px;
+  margin-left: 90px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #00000012;
+  border-radius: 10px;
+  opacity: 1;
+}.resumebtn{
  background-color: white;
  border-color: white;
  border-radius: 20px;
+}
+.btnresume{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #00000012;
+  border-radius: 10px;
+  margin-left: 20px;
+  height: 51px;
+  margin-bottom: 10px;
+  width: 100px;
+  opacity: 1;
 }
 .resumeUploadbtn1{
   background-color: #371a5e;
@@ -133,7 +207,7 @@ font-weight: bold;
   width: 650px;
 }
 .card4{
-  height: 400px;
+  height: 330px;
   width: 650px;
 }
 .card5{

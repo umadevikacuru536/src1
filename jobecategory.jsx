@@ -125,7 +125,33 @@ function Jobcategory(){
           </div>
         </div>
       </nav>
+      <div class="text-center align-items-center justify-content-center secondContainer p-4">
+    <span class="">Home  Jobs</span>
+    <div class="text-center align-items-center justify-content-center d-flex row m-2">
+        <div class="d-flex p-1 align-items-center seacrhMainContainer m-2 col-md-4">
+            <div class="">
+                <i class="fa-solid fa-magnifying-glass p-3"></i>
+                <input type="text" placeholder="Job title skills or company " class=" p-1 searchBox "/>
+            </div>
+            <div>
+                <i class="fa-solid fa-sort-down p-2 "></i>
+            </div>
+        </div>
+        <div class="d-flex p-1 align-items-center seacrhMainContainer m-2 col-md-4">
+            <div class="">
+                <i class="fa-solid fa-location-dot p-3"></i>
+                <input type="text" placeholder="City, Province or region " class=" p-1 searchBox "/>
+            </div>
+            <div>
+                <i class="fa-solid fa-sort-down p-2 "></i>
+            </div>
+        </div>
 
+
+    </div>
+    <button class=" registerButton">Search</button>
+
+</div>
             {/* ... */}
             <div className="container buttoncontainer">
             <div className="row">

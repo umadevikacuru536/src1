@@ -1,7 +1,8 @@
 import "./browesjobs.css";
 import logo from "./pabjobs-logo.png";
 import { Link, useLocation, useParams } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -13,9 +14,79 @@ function Home2(props) {
   const [selectedblog, setselectedblog] = useState(null);
   const [userskills, setUserskills] = useState("");
   const [userlocation, setUserLocation] = useState("");
-  const [usereperience, setusereperience] = useState("");
-  const [userstate, setuserstate] = useState("");
-  const [userSalary, setuserSalary] = useState("");
+  const [experienceFilters, setExperienceFilters] = useState([]);
+  const [userstate, setuserstate] = useState({});
+  const [userSalary, setuserSalary] = useState({});
+
+  const [selectedCardIndexes, setSelectedCardIndexes] = useState([]);
+
+  const toggleCardSelection = (index) => {
+    // Clone the selectedCardIndexes array to avoid mutating state directly
+    const updatedSelectedCardIndexes = [...selectedCardIndexes];
+
+    // Check if the card is already selected
+    const selectedIndex = updatedSelectedCardIndexes.indexOf(index);
+
+    if (selectedIndex === -1) {
+      // If it's not selected, add it to the list and set its color
+      updatedSelectedCardIndexes.push(index);
+    } else {
+      // If it's already selected, remove it from the list
+      updatedSelectedCardIndexes.splice(selectedIndex, 1);
+    }
+
+    setSelectedCardIndexes(updatedSelectedCardIndexes);
+  };
+ 
+
+  const handleExperienceFilterChange = (e) => {
+    const { name, checked } = e.target;
+    setExperienceFilters({
+      ...experienceFilters,
+      [name]: checked,
+    });
+  };
+  const handleExperienceFilterChange1 = (e) => {
+    const { name, checked } = e.target;
+    setuserstate({
+      ...userstate,
+      [name]: checked,
+    });
+  };
+  const handleExperienceFilterChange2 = (e) => {
+    const { name, checked } = e.target;
+    setuserSalary({
+      ...userSalary,
+      [name]: checked,
+    });
+  };
+  const userExp = () => {
+    const selectsalary = Object.keys(userSalary).filter(
+      (key) => userSalary[key]
+    );
+    const filteredJobs2 = blogslist.filter((blog) =>
+      selectsalary.includes(blog.salary)
+    );
+    setblogslist(filteredJobs2);
+  };
+
+  const userExp1 = () => {
+    const selectedExperienceFilters = Object.keys(experienceFilters).filter(
+      (key) => experienceFilters[key]
+    );
+    const filteredJobs1 = blogslist.filter((blog) =>
+      selectedExperienceFilters.includes(blog.experience)
+    );
+    setblogslist(filteredJobs1);
+  };
+
+  const userExp2 = () => {
+    const selectstate = Object.keys(userstate).filter((key) => userstate[key]);
+    const filteredJobs3 = blogslist.filter((blog) =>
+      selectstate.includes(blog.cities)
+    );
+    setblogslist(filteredJobs3);
+  };
 
   const searchBySkills = () => {
     const filteredJobs = blogslist.filter(
@@ -29,27 +100,9 @@ function Home2(props) {
     );
     setblogslist(filteredJobs);
   };
-
-  const userExp = (e) => {
-    const fillter = blogslist.filter((blog) => blog.experience.includes(e));
-    setblogslist(fillter);
-    setusereperience(fillter);
-  };
-
-  const userState = (e) => {
-    const fillter = blogslist.filter((blog) => blog.cities.includes(e));
-    setblogslist(fillter);
-    setuserstate(fillter);
-  };
-
-  const userSalary1 = (e) => {
-    const fillter = blogslist.filter((blog) => blog.salary.includes(e));
-    setblogslist(fillter);
-    setuserSalary(fillter);
-  };
   useEffect(() => {
     fetchblogs();
-  }, []);
+  }, [experienceFilters, userstate, userSalary]);
 
   const fetchblogs = async () => {
     const api = "http://localhost:5010/allbrowsers";
@@ -64,15 +117,97 @@ function Home2(props) {
       setblogslist(response.data);
       if (state?.location) {
         handleFilter(state?.location, response.data);
-      }if(response.data.length> 0){
-        setselectedblog(response.data[0])
       }
-      
+      if (response.data.length > 0) {
+        setselectedblog(response.data[0]);
+      }
     } catch (error) {
       console.error("Error fetching blogs:", error);
     }
   };
 
+  const applyBtn = async (blog) => {
+    try {
+      const { title, salary, companyname, cities, experience, Img, email } =
+        blog;
+
+      const response = await axios.post("http://localhost:5010/appiledjobs", {
+        title,
+        salary,
+        companyname,
+        cities,
+        experience,
+        Img,
+        email,
+      });
+
+      if (response.status === 200) {
+        toast.success("Registration Successful", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("User already exists", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
+
+  const saveBtn = async (blog) => {
+    try {
+      const { title, salary, companyname, cities, experience, Img, email } =
+        blog;
+      const response = await axios.post("http://localhost:5010/savedjobs", {
+        title,
+        salary,
+        companyname,
+        cities,
+        experience,
+        Img,
+        email,
+      });
+
+      if (response.status === 200) {
+        toast.success("Registration Successful", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("User already exists", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
   const onclickblogdetails = async (blogid) => {
     // const api=`https://pab-server.onrender.com/api/jobs/${blogid}`
     // const response=await axios.get(api);
@@ -218,6 +353,7 @@ function Home2(props) {
           Search
         </button>
       </div>
+
       <section class="container">
         <div class="row">
           <div class="col-lg-1"></div>
@@ -233,27 +369,70 @@ function Home2(props) {
                     Experience
                   </button>
                   <ul class="dropdown-menu">
-                    <li
-                      onClick={() => {
-                        userExp("0-2 years");
-                      }}
-                    >
-                      0-2 years
-                    </li>
-                    <li
-                      onClick={() => {
-                        userExp("2-5 years");
-                      }}
-                    >
-                      2-5 years
-                    </li>
-                    <li
-                      onClick={() => {
-                        userExp("5-7 years");
-                      }}
-                    >
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="5-7 years"
+                        checked={experienceFilters["5-7 years"]}
+                        onChange={handleExperienceFilterChange}
+                      />
                       5-7 years
-                    </li>
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="2-3 years"
+                        checked={experienceFilters["2-3 years"]}
+                        onChange={handleExperienceFilterChange}
+                      />
+                      2-3 years
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="0-3 years"
+                        checked={experienceFilters["0-3 years"]}
+                        onChange={handleExperienceFilterChange}
+                      />
+                      0-3 years
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="0-2 years"
+                        checked={experienceFilters["0-2 years"]}
+                        onChange={handleExperienceFilterChange}
+                      />
+                      0-2 years
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="7-10 years"
+                        checked={experienceFilters["7-10 years"]}
+                        onChange={handleExperienceFilterChange}
+                      />
+                      7-10 years
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="2-5years"
+                        checked={experienceFilters["2-5years"]}
+                        onChange={handleExperienceFilterChange}
+                      />
+                      2-5years
+                    </label>
+                    <br />
+
+                    <button className="registerButton" onClick={userExp1}>
+                      Search
+                    </button>
                   </ul>
                 </div>
               </div>
@@ -268,61 +447,79 @@ function Home2(props) {
                     Location
                   </button>
                   <ul class="dropdown-menu">
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        onClick={() => {
-                          userState("AP");
-                        }}
-                      >
-                        AP
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        onClick={() => {
-                          userState("Bangalore Rural");
-                        }}
-                      >
-                        Bangalore Rural
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        onClick={() => {
-                          userState("Visakhapatnam");
-                        }}
-                      >
-                        Visakhapatnam
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        onClick={() => {
-                          userState("Ahmednagar");
-                        }}
-                      >
-                        Ahmednagar
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        onClick={() => {
-                          userState("AP");
-                        }}
-                      >
-                        Mumbai
-                      </a>
-                    </li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Bangalore Rural"
+                        checked={userstate["Bangalore Rural"]}
+                        onChange={handleExperienceFilterChange1}
+                      />
+                      Bangalore Rural
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Visakhapatnam"
+                        checked={userstate["Visakhapatnam"]}
+                        onChange={handleExperienceFilterChange1}
+                      />
+                      Visakhapatnam
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="AP"
+                        checked={userstate["AP"]}
+                        onChange={handleExperienceFilterChange1}
+                      />
+                      AP
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Ahmednagar"
+                        checked={userstate["Ahmednagar"]}
+                        onChange={handleExperienceFilterChange1}
+                      />
+                      Ahmednagar
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="hyderabad"
+                        checked={userstate["hyderabad"]}
+                        onChange={handleExperienceFilterChange1}
+                      />
+                      hyderabad
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Bangalore"
+                        checked={userstate["Bangalore"]}
+                        onChange={handleExperienceFilterChange1}
+                      />
+                      Bangalore
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="kadapa"
+                        checked={userstate["kadapa"]}
+                        onChange={handleExperienceFilterChange1}
+                      />
+                      kadapa
+                    </label>
+                    <br />
+                    <button className="registerButton" onClick={userExp2}>
+                      Search
+                    </button>
                   </ul>
                 </div>
               </div>
@@ -337,50 +534,49 @@ function Home2(props) {
                     Salary
                   </button>
                   <ul class="dropdown-menu">
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        onClick={() => {
-                          userSalary1("4-5LPA");
-                        }}
-                      >
-                        4-5LPA
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        onClick={() => {
-                          userSalary1("3-5LPA");
-                        }}
-                      >
-                        3-5LPA
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        onClick={() => {
-                          userSalary1("2-5LPA");
-                        }}
-                      >
-                        2-5LPA
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        onClick={() => {
-                          userSalary1("2-5LPA");
-                        }}
-                      >
-                        2-5LPA
-                      </a>
-                    </li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="4-5LPA"
+                        checked={userSalary["4-5LPA"]}
+                        onChange={handleExperienceFilterChange2}
+                      />
+                      4-5LPA
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="3-5LPA"
+                        checked={userSalary["3-5LPA"]}
+                        onChange={handleExperienceFilterChange2}
+                      />
+                      3-5LPA
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="2-5LPA"
+                        checked={userSalary["2-5LPA"]}
+                        onChange={handleExperienceFilterChange2}
+                      />
+                      2-5LPA
+                    </label>
+                    <br />
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="4-2LPA"
+                        checked={userSalary["4-2LPA"]}
+                        onChange={handleExperienceFilterChange2}
+                      />
+                      4-2LPA
+                    </label>
+                    <br />
+                    <button className="registerButton" onClick={userExp}>
+                      Search
+                    </button>
                   </ul>
                 </div>
               </div>
@@ -621,6 +817,8 @@ function Home2(props) {
                       </p>
                       <div class="loc-item" style={{ marginLeft: "10px" }}>
                         <p class="m-0">{blog.jobType}</p>
+                        <p class="m-0">{blog.experience}</p>
+
                         <p class="m-0">{blog.cities}</p>
                         <p class="m-0">{blog.education}</p>
                         <span
@@ -642,9 +840,22 @@ function Home2(props) {
                 <div class="container">
                   <div class="row">
                     <div className="col-md-8"></div>
-
+                    <ToastContainer
+                      position="top-right"
+                      autoClose={5000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="light"
+                    />
+                    {/* Same as */}
+                    <ToastContainer />
                     {selectedblog && (
-                      <div className="d-flex flex-column card4">
+                      <div className="d-flex flex-column maa">
                         <div className="d-flex flex-row">
                           <div className="col-md-2 ">
                             <img
@@ -668,36 +879,61 @@ function Home2(props) {
                             </p>
                           </div>
                           <div className="col-md-5 margin1">
-                            <h6
-                              style={{ marginLeft: "30px", marginTop: "10px" }}
+                            <div>
+                              <h6
+                                style={{
+                                  marginLeft: "30px",
+                                  marginTop: "10px",
+                                }}
+                              >
+                                {selectedblog.salary}
+                              </h6>
+                            </div>
+
+                            <div
+                              key={selectedblog}
+                              className={`col-md-5 margin1 ${
+                                selectedCardIndexes.includes(selectedblog)
+                                  ? "selected-card"
+                                  : ""
+                              }`}
+                              onClick={() => toggleCardSelection(selectedblog)}
                             >
-                              {selectedblog.salary}
                               <i
-                                class="fa-solid fa-bookmark book"
-                                id="bookItem"
-                                style={{ marginLeft: "120px" }}
-                              ></i>
-                            </h6>
-                            <p class="m-0">
-                              <i
-                                class="fa-solid fa-location-dot"
-                                style={{
-                                  marginLeft: "20px",
-                                  marginRight: "8px",
+                                className={`fa-solid fa-bookmark book ${
+                                  selectedCardIndexes.includes(selectedblog)
+                                    ? "green-book"
+                                    : "black-book"
+                                }`}
+                                style={{ marginLeft: "220px" }}
+                                onClick={() => {
+                                  saveBtn(selectedblog);
                                 }}
                               ></i>
-                              {selectedblog.cities}
-                            </p>
-                            <p class="m-0">
-                              <i
-                                class="fa-solid fa-briefcase"
-                                style={{
-                                  marginLeft: "20px",
-                                  marginRight: "10px",
-                                }}
-                              ></i>
-                              {selectedblog.experience}
-                            </p>
+                            </div>
+
+                            <div>
+                              <p class="m-0">
+                                <i
+                                  class="fa-solid fa-location-dot"
+                                  style={{
+                                    marginLeft: "20px",
+                                    marginRight: "8px",
+                                  }}
+                                ></i>
+                                {selectedblog.cities}
+                              </p>
+                              <p class="m-0">
+                                <i
+                                  class="fa-solid fa-briefcase"
+                                  style={{
+                                    marginLeft: "20px",
+                                    marginRight: "10px",
+                                  }}
+                                ></i>
+                                {selectedblog.experience}
+                              </p>
+                            </div>
                           </div>
                         </div>
                         <hr />
@@ -716,7 +952,7 @@ function Home2(props) {
                                 color: "white",
                               }}
                               id="applyItem"
-                              onclick="applyBtn()"
+                              onClick={() => applyBtn(selectedblog)}
                             >
                               Apply Now
                             </button>
@@ -737,7 +973,6 @@ function Home2(props) {
                         <h1>cities</h1>
                         <p>{selectedblog.cities}</p>
                       </div>
-                     
                     )}
                   </div>
                 </div>

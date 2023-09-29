@@ -142,6 +142,33 @@ function JobLocation(){
           </div>
         </div>
       </nav>
+      <div class="text-center align-items-center justify-content-center secondContainer p-4">
+    <span class="">Home  Jobs</span>
+    <div class="text-center align-items-center justify-content-center d-flex row m-2">
+        <div class="d-flex p-1 align-items-center seacrhMainContainer m-2 col-md-4">
+            <div class="">
+                <i class="fa-solid fa-magnifying-glass p-3"></i>
+                <input type="text" placeholder="Job title skills or company " class=" p-1 searchBox "/>
+            </div>
+            <div>
+                <i class="fa-solid fa-sort-down p-2 "></i>
+            </div>
+        </div>
+        <div class="d-flex p-1 align-items-center seacrhMainContainer m-2 col-md-4">
+            <div class="">
+                <i class="fa-solid fa-location-dot p-3"></i>
+                <input type="text" placeholder="City, Province or region " class=" p-1 searchBox "/>
+            </div>
+            <div>
+                <i class="fa-solid fa-sort-down p-2 "></i>
+            </div>
+        </div>
+
+
+    </div>
+    <button class=" registerButton">Search</button>
+
+</div>
       <div className="container buttoncontainer">
         <div className="row">
           <div className="col-12 col-md-2">
@@ -213,36 +240,37 @@ function JobLocation(){
       <div className="container mt-5">
         <div className="row">
           <div className="col-12 col-md-12 d-flex">
-            <button className="buttonalpha card shadow">A</button>
-            <button className="buttonalpha card shadow">B</button>
-            <button className="buttonalpha card shadow">C</button>
-            <button className="buttonalpha card shadow">D</button>
-            <button className="buttonalpha card shadow">E</button>
-            <button className="buttonalpha card shadow">F</button>
-            <button className="buttonalpha card shadow">G</button>
-            <button className="buttonalpha card shadow">H</button>
-            <button className="buttonalpha card shadow">I</button>
-            <button className="buttonalpha card shadow">J</button>
-            <button className="buttonalpha card shadow">K</button>
+            <button className="buttonalpha ">A</button>
+            <button className="buttonalpha ">B</button>
+            <button className="buttonalpha ">C</button>
+            <button className="buttonalpha ">D</button>
+            <button className="buttonalpha ">F</button>
+            <button className="buttonalpha ">G</button>
+            <button className="buttonalpha ">H</button>
+            <button className="buttonalpha ">I</button>
+            <button className="buttonalpha ">J</button>
+            <button className="buttonalpha ">K</button>
+            <button className="buttonalpha ">L</button>
           </div>
           <div className="col-12 col-md-12 d-flex">
-            <button className="buttonalpha card shadow">L</button>
-            <button className="buttonalpha card shadow">M</button>
-            <button className="buttonalpha card shadow">N</button>
-            <button className="buttonalpha card shadow">O</button>
-            <button className="buttonalpha card shadow">P</button>
-            <button className="buttonalpha card shadow">Q</button>
-            <button className="buttonalpha card shadow">R</button>
-            <button className="buttonalpha card shadow">S</button>
-            <button className="buttonalpha card shadow">T</button>
-            <button className="buttonalpha card shadow">U</button>
-            <button className="buttonalpha card shadow">V</button>
+            
+            <button className="buttonalpha ">M</button>
+            <button className="buttonalpha ">N</button>
+            <button className="buttonalpha ">O</button>
+            <button className="buttonalpha ">P</button>
+            <button className="buttonalpha ">Q</button>
+            <button className="buttonalpha ">R</button>
+            <button className="buttonalpha ">S</button>
+            <button className="buttonalpha ">T</button>
+            <button className="buttonalpha ">U</button>
+            <button className="buttonalpha ">V</button>
+            <button className="buttonalpha ">W</button>
           </div>
           <div className="col-12 col-md-12 d-flex">
-            <button className="buttonalpha card shadow">W</button>
-            <button className="buttonalpha card shadow">X</button>
-            <button className="buttonalpha card shadow">Y</button>
-            <button className="buttonalpha card shadow">Z</button>
+            
+            <button className="buttonalpha ">X</button>
+            <button className="buttonalpha ">Y</button>
+            <button className="buttonalpha ">Z</button>
           </div>
         </div>
       </div>
@@ -270,7 +298,7 @@ function JobLocation(){
             blogslist.map((blog, index) => (
               <div className="col-12 col-md-3" key={index}>
                 <button
-                  className="buttonlocation card w-100 mb-3"
+                  className="buttonlocation   mb-3"
                   onClick={() => handlecompany(blog.companyname)}
                 >
                  <p class="m-0">{blog.cities}</p>

@@ -16,6 +16,8 @@ function Resume() {
     heading: heading,
   };
   console.log(useData);
+  
+
   const onSubmitForm1 = (e) => {
     e.preventDefault();
 
@@ -264,9 +266,83 @@ function Resume() {
       toast.warning("Enter the Required Details");
     }
   };
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
+  //cetification
+  const [certification, setCeritifion] = useState("");
 
+  const [data8, setdata8] = useState([]);
+  console.log(Patent);
+ const useData8 = {
+    certification : certification,
+  };
+  console.log(useData8);
+  const onSubmitForm9 = (e) => {
+    e.preventDefault();
+
+    if ( certification !== "") {
+      const headers = {
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZDBhMGJhOTZkMTA5YTFhNzZkNzMiLCJpYXQiOjE2OTExNDQzOTV9.tX4qCPXSptfwgk1C6dIhOVgB6ffWwGhOgClGkZluU9s",
+      };
+      axios
+        .post("http://localhost:5010/certification", useData8, { headers })
+        .then((response) => {
+          setdata8(response.data);
+
+          console.log(response.data);
+          toast.success("Registration Successfull");
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    } else {
+      toast.warning("Enter the Required Details");
+    }
+  };
+   //cetification
+   const [careerProfile, setcareerProfile] = useState("");
+
+   const [data9, setdata9] = useState([]);
+   console.log(Patent);
+  const useData9 = {
+    careerProfile : careerProfile,
+   };
+   console.log(useData9);
+   const onSubmitForm10 = (e) => {
+     e.preventDefault();
+ 
+     if ( careerProfile !== "") {
+       const headers = {
+         token:
+           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZDBhMGJhOTZkMTA5YTFhNzZkNzMiLCJpYXQiOjE2OTExNDQzOTV9.tX4qCPXSptfwgk1C6dIhOVgB6ffWwGhOgClGkZluU9s",
+       };
+       axios
+         .post("http://localhost:5010/careerProfile", useData9, { headers })
+         .then((response) => {
+           setdata9(response.data);
+ 
+           console.log(response.data);
+           toast.success("Registration Successfull");
+         })
+         .catch((error) => {
+           console.log(error.message);
+         });
+     } else {
+       toast.warning("Enter the Required Details");
+     }
+   }; 
+  const [selectedFile, setSelectedFile] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const openUploadedFile = () => {
+    if (selectedFile) {
+      // Create a URL for the selected file
+      const fileURL = URL.createObjectURL(selectedFile);
+
+      // Open the file in a new window or tab
+      window.open(fileURL);
+    } else {
+      alert('No file selected. Please choose a file to open.');
+    }
+  };
   const handleFileChange = (event) => {
     const file = event.target.files[0];
 
@@ -287,7 +363,9 @@ function Resume() {
         setErrorMessage("Invalid file format or size exceeds 2MB.");
       }
     }
+    
   };
+  
   return (
     <div>
       <nav class="navbar navbar-expand-sm navbar-dark shadow">
@@ -375,10 +453,11 @@ function Resume() {
           </div>
         </div>
       </nav>
-      <div class="container" style={{ backgroundColor: " #f8f2f8" }}>
+      <div className="uma12">
+      <div class="container" >
         <div class="row">
-          <div class="col-md-4">
-            <div class="profilecardi card  shadow">
+          <div class="col-sm-12 col-md-4 col-lg-6">
+            <div class="profilecardi">
               <div class="d-flex flex-row  ">
                 <div>
                   <Link to="/profile">
@@ -386,7 +465,7 @@ function Resume() {
                       class=" fa-sharp fa-solid fa-circle-user profileicon px-3"
                       style={{ fontsize: "120px" }}
                     ></i>
-                  </Link>
+                </Link>
                 </div>
                 <div>
                   <h5 class="resumeh5">K.umadevi</h5>
@@ -394,14 +473,14 @@ function Resume() {
                   <p>at Perfex Technologies</p>
                 </div>
               </div>
-              <div class="p-2">
+              <div class="p-2 mx-3">
                 <i class="fa-solid fa-phone-volume px-3 resumeicon"></i>
                 <span>6305873533</span>
-                <i class="fa-solid fa-circle-check janlogin px-3 resumeicon1"></i>
+                <i class="fa-solid fa-circle-check px-3" style={{color: "#1bd051"}}></i>
                 <br />
                 <i class="fa-solid fa-envelope px-3 resumeicon"></i>
                 <span>kavuurumadevi@gmail.com</span>
-                <i class="fa-solid fa-circle-check janlogin px-3 resumeicon1"></i>
+                <i class="fa-solid fa-circle-check px-3" style={{color: "#1bd051"}}></i>
                 <br />
                 <i class="fa-solid fa-briefcase px-3 resumeicon"></i>
                 <span>2 years</span>
@@ -417,9 +496,9 @@ function Resume() {
               </div>
               <hr />
               <div>
-                <p class="spa85">Your profile updated</p>
+                <p class="spa85 mx-5">Your profile updated</p>
                 <button
-                  class="spa82 p-1 px-4 bg-warning "
+                  class="spa82 p-1 px-4 mx-5 bg-warning "
                   style={{ borderColor: "yellow", borderRadius: "10px" }}
                 >
                   89%
@@ -429,36 +508,36 @@ function Resume() {
               </div>
             </div>
             <div class="mt-2 ">
-              <button class="w-100 p-2 mt-2 resumebtn shadow">Resume</button>
-              <button class="w-100 p-2 mt-2 resumebtn shadow">
+              <a href="#Resume"><button class="w-75 p-2 mt-2 mx-5 resumebtn shadow">Resume</button></a>
+              <a href="#ResumeHeadline"><button class="w-75 p-2 mt-2 mx-5  resumebtn shadow">
                 Resume Headline
-              </button>
-              <button class="w-100 p-2 mt-2 resumebtn shadow">
+              </button></a>
+             <a href="#ProfileSummary"> <button class="w-75 p-2 mt-2 mx-5  resumebtn shadow">
                 Profile Summary
-              </button>
-              <button class="w-100 p-2 mt-2 resumebtn shadow">
+              </button></a>
+              <a href="#Keyskills"><button class="w-75 p-2 mt-2 mx-5 resumebtn shadow">
                 Key skills
-              </button>
-              <button class="w-100 p-2 mt-2 resumebtn shadow">
+              </button></a>
+              <a href="#Employment"><button class="w-75 p-2 mt-2 mx-5  resumebtn shadow">
                 Employment
-              </button>
-              <button class="w-100 p-2 mt-2 resumebtn shadow">Education</button>
-              <button class="w-100 p-2 mt-2 resumebtn shadow">Projects</button>
-              <button class="w-100 p-2 mt-2 resumebtn shadow">
+              </button></a>
+              <a href="#Education"> <button class="w-75 p-2 mt-2 mx-5  resumebtn shadow">Education</button></a>
+              <a href="#Projects"><button class="w-75 p-2 mt-2 mx-5  resumebtn shadow">Projects</button></a>
+              <a href="#Accomplishment"><button class="w-75 p-2 mt-2 mx-5 resumebtn shadow">
                 Accomplishment
-              </button>
-              <button class="w-100 p-2 mt-2 resumebtn shadow">
+              </button></a>
+              <a href="#DesiredcareerProfile"> <button class="w-75 p-2 mt-2 mx-5  resumebtn shadow">
                 Desired career Profile
-              </button>
-              <button class="w-100 p-2 mt-2 resumebtn shadow">
+              </button></a>
+             <a href="#home"> <button class="w-75 p-2 mt-2 mx-5  resumebtn shadow">
                 Personal Details
-              </button>
+              </button></a>
             </div>
           </div>
           {/* <!-- 2nd part --> */}
 
-          <div class="col-md-6">
-            <div class="card1 card p-3 shadow">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="resumupload p-3 " id="Resume">
               <p>
                 <b class="px-2">Resume</b> (Recruiters generally do not look at
                 profiles without resumes.)
@@ -485,9 +564,11 @@ function Resume() {
               <p class="resumepara">
                 Supported formates : doc,docx,rtf,pdf,upto 2mb{" "}
               </p>
+              <button class="resumepara" onClick={openUploadedFile}>Open Uploaded File</button>
             </div>
 
-            <div class="card2 card p-4 mt-3 shadow">
+             
+            <div class="resumupload p-4 mt-3" id="ResumeHeadline">
               <div>
                 <div class="d-flex flex-row">
                   <h5>Resume Headline</h5>
@@ -573,7 +654,7 @@ function Resume() {
     
                 </div> */}
 
-            <div class="card3 card p-4 mt-3 shadow">
+            <div class="resumupload p-4 mt-3" id="ProfileSummary">
               <div>
                 <div class="d-flex flex-row">
                   <h5>Profile Summary</h5>
@@ -661,7 +742,7 @@ function Resume() {
                 </p>
               </div>
             </div>
-            <div class="card4 card p-4 mt-3 shadow">
+            <div class="resumupload p-4 mt-3 " id="Keyskills">
               <div>
                 <div class="d-flex flex-row">
                   <h5>Key Skills</h5>
@@ -738,42 +819,45 @@ function Resume() {
                 </div>
                 <hr />
                 <div class="resumegroup px-5">
-                  <button class="btnresume shadow p-2 px-3 m-1 mx-3">
+                  <div>
+                  <button class="btnresume ">
                     Photoshop
                   </button>
-                  <button class="btnresume shadow p-2 px-3 m-1 mx-3">
+                  <button class="btnresume ">
                     aftereffects
                   </button>
-                  <button class="btnresume shadow p-2 px-4 m-1 mx-3">
+                  <button class="btnresume">
                     Editing
                   </button>
-                  <button class="btnresume shadow p-2 px-2 m-1 mx-3">
+                  </div>
+                  <button class="btnresume ">
                     Adobe XD
                   </button>
-                  <button class="btnresume shadow p-2 px-2 m-1 mx-3">
+                  <button class="btnresume ">
                     Animation
+                  </button>
+                  <button class="btnresume ">
+                    Premire Pro
                   </button>
                 </div>
                 <div class="resunegroup px-5 mt-2">
-                  <button class="btnresume shadow p-2 px-3 m-1 mx-3">
-                    Premire Pro
-                  </button>
-                  <button class="btnresume shadow p-2 px-4 m-1 mx-3">
+                 
+                  <button class="btnresume ">
                     Blender
                   </button>
-                  <button class="btnresume shadow p-2 px-3 m-1 mx-3">
+                  <button class="btnresume ">
                     illustrator
                   </button>
-                  <button class="btnresume shadow p-2 px-4 m-1 mx-3">
+                  <button class="btnresume ">
                     Canva
                   </button>
-                  <button class="btnresume shadow p-2 px-4 m-1 mx-3">
+                  <button class="btnresume">
                     Figma
                   </button>
                 </div>
               </div>
             </div>
-            <div class="card5 card p-4 mt-3 shadow">
+            <div class="resumupload p-4 mt-3 " id="Employment">
               <div>
                 <div class="d-flex flex-row">
                   <h5>
@@ -797,7 +881,7 @@ function Resume() {
                 </div>
               </div>
             </div>
-            <div class="card5 card p-4 mt-3 shadow">
+            <div class="resumupload p-4 mt-3 " id="Education">
               <div>
                 <div class="d-flex flex-row">
                   <h5>
@@ -819,8 +903,8 @@ function Resume() {
                 </div>
               </div>
             </div>
-            <div class="card5 card p-4 mt-3 shadow">
-              <div>
+            <div class="resumuploadp-4 mt-3" id="Projects">
+              <div className="resumupload">
                 <div class="d-flex flex-row">
                   <h5>Projects</h5>
                 </div>
@@ -835,7 +919,7 @@ function Resume() {
                 </div>
               </div>
             </div>
-            <div class="card p-4 mt-3 shadow">
+            <div class="resumupload p-4 mt-3" id="Accomplishment">
               <div>
                 <div class="d-flex flex-row">
                   <h5>Accomplishment</h5>
@@ -846,7 +930,7 @@ function Resume() {
                       class="material-symbols-outlined text-start"
                       data-bs-toggle="modal"
                       data-bs-target="#myModal25"
-                      style={{ marginLeft: "400px" }}
+                      style={{ marginLeft: "320px" }}
                     >
                       edit_square
                     </i>
@@ -1233,16 +1317,74 @@ function Resume() {
                       type="button"
                       class="material-symbols-outlined text-start"
                       data-bs-toggle="modal"
-                      data-bs-target="#myModal23"
-                      style={{ marginLeft: "130px" }}
+                      data-bs-target="#myModal09"
+                      style={{ marginLeft: "280px" }}
                     >
                       edit_square
                     </i>
+                    <div class="modal" id="myModal09">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          {/* <!-- Modal Header --> */}
+                          <div class="modal-header">
+                            <h4 class="modal-title">Certification </h4>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                            ></button>
+                            <ToastContainer
+                              position="top-right"
+                              autoClose={1000}
+                              hideProgressBar={false}
+                              newestOnTop={false}
+                              closeOnClick
+                              rtl={false}
+                              pauseOnFocusLoss
+                              draggable
+                              pauseOnHover
+                              theme="colored"
+                            />
+                          </div>
+
+                          {/* <!-- Modal body --> */}
+                          <div class="modal-body ">
+                            <div>
+                              <label className="heading211">
+                              Certification     
+                              </label>
+                              <br />
+                              <textarea
+                                name=""
+                                id=""
+                                cols="50"
+                                rows="5"
+                                placeholder="Describe here"
+                                onChange={(e) => setCeritifion(e.target.value)}
+                                value={Patent}
+                              ></textarea>
+
+                              {/* <!-- Modal footer --> */}
+                              <div class="modal-footer">
+                                <button
+                                  type="submit"
+                                  class="btn btn-danger"
+                                  data-bs-dismiss="modal"
+                                  onClick={(e) => onSubmitForm9(e)}
+                                >
+                                  Save
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card4 card p-4 mt-3 shadow">
+            <div class="resumupload p-4 mt-3" id="DesiredcareerProfile">
               <div>
                 <div class="d-flex flex-row">
                   <h5>Desired career Profile</h5>
@@ -1252,11 +1394,69 @@ function Resume() {
                       type="button"
                       class="material-symbols-outlined text-start"
                       data-bs-toggle="modal"
-                      data-bs-target="#myModal23"
-                      style={{ marginLeft: "350px" }}
+                      data-bs-target="#myModal009"
+                      style={{ marginLeft: "280px" }}
                     >
                       edit_square
                     </i>
+                    <div class="modal" id="myModal009">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          {/* <!-- Modal Header --> */}
+                          <div class="modal-header">
+                            <h4 class="modal-title">Desired career Profile </h4>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                            ></button>
+                            <ToastContainer
+                              position="top-right"
+                              autoClose={1000}
+                              hideProgressBar={false}
+                              newestOnTop={false}
+                              closeOnClick
+                              rtl={false}
+                              pauseOnFocusLoss
+                              draggable
+                              pauseOnHover
+                              theme="colored"
+                            />
+                          </div>
+
+                          {/* <!-- Modal body --> */}
+                          <div class="modal-body ">
+                            <div>
+                              <label className="heading211">
+                              Desired career Profile  
+                              </label>
+                              <br />
+                              <textarea
+                                name=""
+                                id=""
+                                cols="50"
+                                rows="5"
+                                placeholder="Describe here"
+                                onChange={(e) => setcareerProfile(e.target.value)}
+                                value={careerProfile}
+                              ></textarea>
+
+                              {/* <!-- Modal footer --> */}
+                              <div class="modal-footer">
+                                <button
+                                  type="submit"
+                                  class="btn btn-danger"
+                                  data-bs-dismiss="modal"
+                                  onClick={(e) => onSubmitForm10(e)}
+                                >
+                                  Save
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -1281,7 +1481,7 @@ function Resume() {
                 </div>
               </div>
             </div>
-            <div class="card4 card p-4 mt-3 shadow">
+            <div class="resumupload p-4 mt-3"id="home">
               <div>
                 <div class="d-flex flex-row">
                   <h5>Personal details</h5>
@@ -1313,6 +1513,7 @@ function Resume() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
