@@ -1,0 +1,441 @@
+.logo{
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 200px;
+  }
+  .bellicon1{
+    margin-top: 15px;
+  }
+  /* .user1{
+    color:#282c34;
+    width: 100px;
+    font-size:300%;
+    margin-top: 3vh;
+   
+  } */
+  .profilebutton10{
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+  margin-right: 20px;
+  width: 15%;
+  height: 50px;
+    box-shadow: 1px 1px 1px 1px grey;
+  }
+  .uma12{
+  background: #F8F2FB 0% 0% no-repeat padding-box;
+  width: 100vw;
+  height: 170vh;
+  
+  }
+  .company1{
+    background-color: white;
+    border-radius: 10px;
+    border-color: ghostwhite;
+    margin-top: 5vh;
+    margin-right: 5vh;
+    box-shadow: 1px 1px 1px 1px grey;
+  }
+  .card111{
+    background-color: white;
+    border-radius: 10px;
+    border-color: ghostwhite;
+    box-shadow: 1px 1px 1px 1px grey;
+    width: 61vw;
+    height: 134vh;
+  }
+  /* .card122{
+    background-color: white;
+    border-radius: 10px;
+    border-color: ghostwhite;
+    box-shadow: 1px 1px 1px 1px grey;
+  margin-left: 50px;
+  width: 10%;
+  height: 50%;
+  } */
+  .rama{
+    background-color: white;
+    border-radius: 10px;
+    border-color: ghostwhite;
+   margin-right: 5vh;
+   margin-top: 3vh;
+   height: 13vh;
+   width: 25vh;
+   padding-top: 3vh;
+  }
+  .dashbordheading{
+    text-align: start;
+ 
+   padding-top: 50px;
+    font-weight: bold;
+    color: #4f3570;
+   
+  }
+  .dashbordpara{
+    text-align: start;
+   padding-top: 20px;
+    font-weight: bold;
+  }
+
+  .download{
+    background-color: red;
+    height: 60px;
+    color: white;
+    width: 60px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 14px;
+    margin-right:20px;
+  
+  }
+  .profileview{
+    background-color:goldenrod;
+    height: 60px;
+    color: white;
+    width: 60px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 15px;
+    margin-right:20px;
+  
+  }
+  .img{
+    border-radius: 20px;
+  }
+  .message{
+    background-color:green;
+    height: 60px;
+    color: white;
+    width: 60px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 15px;
+    margin-right:20px;
+  
+  }
+  .edit{
+    background-color:blue;
+    height: 60px;
+    color: white;
+    width: 60px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 15px;
+    margin-right:20px;
+  
+  }
+  .admin{
+    background-color:white;
+    border-color: ghostwhite;
+    border-radius: 5px;
+    margin-left:95vh ;
+  }
+  .hr{
+    background-color:#e6d4f0 ;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+  }
+  .hr1{
+    background-color:#4f3570;
+    border-radius: 10px;
+    color: white;
+    margin-top: 20px;
+    padding: 10px;
+    padding-top: 2vh;
+  
+  }
+  .container125 {
+    background-color: white;
+    border-radius: 10px;
+    border-color: ghostwhite;
+    box-shadow: 1px 1px 1px 1px grey;
+  
+ 
+  }
+  /* search */
+   .container8{
+    text-align: center;
+    background-image: url("file:///C:/Users/Perfex/Downloads/Mask%20Group%201.svg");
+    height: 400px;
+    padding-top: 50px;
+    }
+    .subhomebutton{
+      background-color: white;
+      border-color: ghostwhite;
+      border-radius: 10px;
+      margin-left: 1vh;
+      color: gray;
+    } 
+    .subbutton1{
+      background-color: #2c0264;
+      margin-top: 30px;
+      width: 19vh;
+      height: 7vh;
+    }
+    .setha{
+      background-color: white;
+      border-color: ghostwhite;
+      border-radius: 10px;
+      margin-left: 50vh;
+      margin-right: 50vh;
+    }
+    .excel{
+      background-color: #2c0264;
+      color: white;
+      border-radius: 10px;
+      margin-left: 10px;
+    }
+    .round{
+      background-color: white;
+      border-color: #d0a7e6;
+      border-radius: 5px;
+      margin-left: 20px;
+    }
+    .lela1{
+      background-color:#f1dff1;
+  }
+  .srinu{
+    height: auto;
+    background-color:whitesmoke;
+    border-radius: 10px;
+    border-color: ghostwhite;
+    box-shadow: 1px 1px 1px 1px grey;
+    height: 40vh;
+    width: 15vw;
+
+}
+.praveen{
+  background-color: whitesmoke;
+  margin-left: 30px;
+  margin-top: 35px;
+  border-radius: 10px;
+  height: 45vh;
+  width: 100vw;;
+  border-color: ghostwhite;
+  box-shadow: 1px 1px 1px 1px grey;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+/* .a{
+  border-radius: 5px;
+  color: white;
+} */
+
+.b{
+  height: 90px;
+  width: 90px;
+  background-color:darkgray;
+  border-radius: 120px;
+  margin-left: 12vh;
+}
+
+.kumar{
+  color: white;
+  font-size: 5vh;
+  margin-top: 3vh;
+}
+.keyskills{
+  color: gray;
+}
+.detailsbuttons{
+  background-color:#e0e0e0;
+  border-color:#dbdada;
+  margin-right: 2vh;
+  border-radius: 5px;
+  
+}
+.databasebtn{
+  background-color: #2c0264;
+  color: white;
+  border-radius: 10px;
+ margin-top: 10vh;
+ margin-right: 40px;
+ margin-bottom: 5vh;
+  height: 5vh;
+  width: 8vw;
+} 
+.databasebtn1{
+  background-color: white;
+  color:black;
+  border-color: white;
+  border-radius: 10px;
+ margin-top: 10vh;
+ margin-right: 40px;
+ margin-bottom: 5vh;
+  height: 5vh;
+  width: 8vw;
+} 
+.buy{
+  background-color:#ddcce7;
+
+} 
+ .cardbuy{
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px whitesmoke;
+  margin-top: 4vh;
+  height: 75vh;
+  width: 25vw;
+  margin-right: 6vh;
+ }
+ .buybutton{
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px 6px whitesmoke;
+  border-color: white;
+  margin-left: 9vh;
+  width: 15vw;
+  padding-top: 10px;
+  margin-bottom: 5vh;
+ }
+.buynow{
+  border-color: #2c0264;
+   background-color: white;
+   height: 30px;
+    width: 90px;
+    border-radius: 10px;
+     margin-left: 200px;
+      margin-bottom: 30px;
+}
+.jobposting {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgb(194, 188, 188);
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  width: 15vw;
+  margin-right: 3vh;
+  height: 50vh;
+}
+ .combo{
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px rgb(194, 188, 188);
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  width: 18vw;
+  margin-right: 3vh;
+  height: 60vh;
+  padding-left: 2vh;
+ }
+  .monthdaily{
+    background-color: #2c0264;
+    color: white;
+    border-radius: 10px;
+    width: 54vh;
+  }
+  .eceldata{
+    justify-content: center;
+    margin-top: 2vh;
+    border-right: 2px solid rgb(197, 191, 191) ;
+  }
+  .eceldata1{
+    justify-content: center;
+    margin-top: 2vh;
+  }
+  .freejob{
+    text-align: center;
+    margin-top: 2vh;
+  }
+  .o{
+    background-color: #efe0f7;
+    margin-left: 50px;
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 50px;
+    margin-top: 7vh;
+
+  }
+  .freedata{
+    text-align: center;
+    margin-left: 5vh;
+    margin-right: 2vh;
+    margin-top: 5vh;
+  }
+  .getbuy{
+    background-color: white;
+    border-radius: 10px;
+    border-color: #d6c0e2;
+    margin-left: 6vh;
+    margin-top: 5vh;
+    width: 22vh;
+    height: 5vh;
+  }
+  .rupee{
+    margin-right: 10px;
+    font-size: 25px;
+    margin-top: 20px;
+  }
+   .U{
+    text-align: center;
+    color: #2c0264;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+   }  
+   .M{
+    background-color: white;
+    border-radius: 10px;
+    border-color: #c8add6;
+    width: 13vw;
+   }
+   .A{
+    background-color: #f8f2f8;
+   }
+   .cricle{
+background-color:rgb(231, 221, 221);
+color: white;
+border-radius:20px 20px 20px 20px;
+font-size: 2vh;
+
+   }
+   .D{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px solid whitesmoke;
+    margin-top: 5vh;
+    height: 60vh;
+    width: 20vw;
+    padding: 7vh;
+    margin-bottom: 30px;
+   }
+   .E{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px solid whitesmoke;
+    margin-top: 5vh;
+    margin-bottom: 30px;
+   }
+   .V{
+    background-color: #f5e3f5;
+    border-radius: 10px;
+    padding-top: 10px;
+    
+   }
+.icons{
+  text-align: center;
+  margin-top: 6vh;
+}
+.graphiccard{
+  background-color: white;
+  border-radius: 10px;
+  border-color: black;
+  box-shadow: 2px 2px 2px 2px solid black;
+}
+   .companybutton{
+    background-color: white;
+    border-radius: 10px;
+    border-color: white;
+    margin-top: 2vh;
+   }
+   .profileicon1{
+    font-size: 15vh;
+    margin-left: 70px;
+   }
+   .socialimags{
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+   }
+   
+   

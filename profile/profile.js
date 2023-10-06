@@ -195,12 +195,12 @@ const file1 = document.getElementById("file").style.display="none"
                   </a>
                 </Link>
               </li>
-              <li class="nav-item">
+              <li class="nav-item1">
                 <i class="fa-solid fa-bell bellicon"></i>
               </li>
-              <li class="nav-item">
+              <li class="nav-item1">
                 <Link to="/profile">
-                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i>
+                  <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle "></i>
                 </Link>
               </li>
             </ul>

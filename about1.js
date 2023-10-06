@@ -12,7 +12,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 function About1() {
   let navigate = useNavigate();
 
-  const [companyemail, setemail] = useState("");
+  const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
  
@@ -20,19 +20,19 @@ function About1() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  console.log(companyemail);
+  console.log(email);
 
   const usersData = {
-    companyemail: companyemail,
+    email: email,
     password: password
   };
   console.log(usersData);
 
   const onSubmitBtn = (e) => {
     e.preventDefault();
-    if (companyemail && password !== "") {
+    if (email && password !== "") {
       axios
-        .post("http://localhost:5010/companylogin", usersData)
+        .post("http://localhost:5010/login", usersData)
         .then((response) => {
           if (response.status === 200) {
             let jwtToken = response.data.token;
@@ -51,7 +51,7 @@ function About1() {
 
 
             setTimeout(function () {
-              navigate("/home");
+              navigate("/database");
             }, 3000);
           }
         })
@@ -111,7 +111,7 @@ function About1() {
                   
               <label for="" class="loginemail">Email ID</label><br />
               <input type="text" name="" id="" class="logininput w-75" placeholder="enter your email ID"  onChange={(e) => setemail (e.target.value)}
-                    value={companyemail} /><br />
+                    value={email} /><br />
               <label for="" class="loginemail">password</label><br />
               <input  type= "text" name="" id="" class="logininput w-75" placeholder="enter your password" onChange={(e) => setpassword(e.target.value)}
                     value={password}/>

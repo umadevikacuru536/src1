@@ -22,7 +22,14 @@ import Jobcompany from './jobcompanys';
 import Changepassword from './profile/changepassword';
 import  Savedjobs from './profile/savedjobs';
 import Resume from './profile/resume';
-import Hi from "./hi";
+import SearchCandidate from './dashbord/searchCandidate';
+import Database from './dashbord/database';
+import Buyservices from './dashbord/buyservices';
+import Jobposting from './dashbord/jobposting';
+import Comboproducts from './dashbord/comboproducts';
+import Companyprofile from './dashbord/companyprofile';
+import PostAjob from './dashbord/post A job';
+import Myjob from './dashbord/myjob';
 function App() {
  
   return (
@@ -49,7 +56,15 @@ function App() {
   <Route path="/changepassword" element={<Changepassword/>}/>
   <Route path="/savedjobs" element={<Savedjobs/>}/>
   <Route path="/resume" element={<Resume/>}/>
-  <Route path="/hi" element={<Hi/>}/>
+  <Route path="/searchcandidate" element={<SearchCandidate/>}/>
+  <Route path="/database" element={<Database/>}/>
+  <Route path="/buyservices" element={<Buyservices/>}/>
+<Route path='/jobposting' element={<Jobposting/>}/>
+<Route path='/comboproducts' element={<Comboproducts/>}/>
+<Route path='/companyprofile' element={<Companyprofile/>}/>
+<Route path="/postajob" element={<PostAjob/>}/>
+<Route path='/myjob' element={<Myjob/>}/>
+
  </Routes>
  <Footer/>
     </div>

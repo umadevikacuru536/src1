@@ -37,7 +37,7 @@ function Register() {
     confirmpassword: confirmpassword,
   };
   console.log(usersData)
-  const [mobileNumber, setMobileNumber] = useState("");
+  
   const [mobileNumberError, setMobileNumberError] = useState("");
 
 
@@ -51,11 +51,11 @@ function Register() {
   
   const handleMobileNumberChange = (e) => {
     const newNumber = e.target.value;
-    setMobileNumber(newNumber);
+    setmobilenumber(newNumber);
     validateMobileNumber(newNumber);
   };
 
-  const [password1, setPassword] = useState("");
+ 
   const [passwordError, setPasswordError] = useState("");
 
  
@@ -70,11 +70,11 @@ function Register() {
   };
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
-    setPassword(newPassword);
+    setpassword(newPassword);
     validatePassword(newPassword);
   };
 
-  const [confirmpassword1, setConfirmpassword] = useState("");
+
   const [confirmpasswordError, setconfirmpasswordError] = useState("");
 
   const validateconfirmPassword = (value) => {
@@ -87,12 +87,12 @@ function Register() {
     }
   };
   const arePasswordsMatching = () => {
-    return password1 === confirmpassword1;
+    return password === confirmpassword;
   };
 
   const handleconfirmPasswordChange = (e) => {
     const newPassword1 = e.target.value;
-    setConfirmpassword(newPassword1);
+    setconfirmpassword(newPassword1);
     validateconfirmPassword(newPassword1);
   };
   const onSubmitForm = (e) => {
@@ -101,7 +101,7 @@ function Register() {
 
 
 
-    if (email && mobileNumber && password1 && confirmpassword1 !== "") {
+    if (email && mobilenumber && password && confirmpassword !== "") {
       axios
         .post("http://localhost:5010/signup/", usersData)
         .then((response) => {
@@ -125,6 +125,16 @@ function Register() {
             setTimeout(function () {
               navigate("/about");
             }, 3000);
+            setTimeout(function () {
+              if (type === "applicant") {
+                // Redirect to job seeker page
+                navigate("/about"); // Define your route for job seekers
+              } else if (type === "recruiter") {
+                // Redirect to recruiter page
+                navigate("/login"); // Define your route for recruiters
+              }
+            }, 3000);
+  
           }
         })
         .catch((error) => {
@@ -225,12 +235,12 @@ function Register() {
                     </a>
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item1">
                   <i class="fa-solid fa-bell bellicon"></i>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item1">
                   <Link to="/profile">
-                    <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle bellicon"></i></Link>
+                    <i class=" user fa-sharp fa-solid fa-circle-user  dropdown-toggle "></i></Link>
 
                 </li>
               </ul>
@@ -371,7 +381,7 @@ function Register() {
                   
                     <input
         type={showPassword ? 'text' : 'password'}
-        value={password1}
+        value={password}
         class="control"
         style={{ padding: "10px" }}
         placeholder="Minimum 6 characters"
@@ -397,7 +407,7 @@ function Register() {
                       style={{ padding: "10px" }}
                       placeholder="Minimum 6 characters"
                       onChange={handleconfirmPasswordChange}
-                      value={confirmpassword1}
+                      value={confirmpassword}
                     /><i className="password-toggle" onClick={togglePasswordVisibility}>
                     <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                   </i>
@@ -422,7 +432,7 @@ function Register() {
                       className="control1"
                       placeholder="Enter your mobile number"
                       onChange={handleMobileNumberChange}
-                      value={mobileNumber}
+                      value={mobilenumber}
                     /><br />
                     {mobileNumberError && (
                       <span className="error mes">{mobileNumberError}</span>
@@ -465,7 +475,7 @@ function Register() {
                     By checking Register you agree to the treams and conditions &
                     privacy polices of pabjobs.com
                   </p>
-                  <button class="{type === 'applicant' ? 'jobsikar' : 'company login'} button14">
+                  <button class="button14">
     Register Now
 </button>
 
